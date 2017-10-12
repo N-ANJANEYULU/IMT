@@ -1,5 +1,7 @@
 package com.acc.controller;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,6 +37,11 @@ public class UserController {
      public String postSubmit(@ModelAttribute("userRegistration")UserRegister userRegistration,ModelMap m){
     	 m.addAttribute("msg","i am from UserRegister Controller");
  		try {
+ 			
+ 			userRegistration.setIsAccessGranted("No");
+ 			userRegistration.setCreateDt(new Date(System.currentTimeMillis()));
+ 			userRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
+ 			
 			dataServices.addEntity(userRegistration);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

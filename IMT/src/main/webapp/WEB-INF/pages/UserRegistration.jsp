@@ -16,7 +16,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="firstName">First Name</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="firstName" id="firstName" class="form-control input-sm"/>
+                    <form:input type="text" path="firstName" id="firstName" class="form-control input-sm"  required="required" />
                      <div class="has-error">
                         <form:errors path="firstName" class="help-inline"/>
                     </div> 
@@ -27,7 +27,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="lastname">Last Name</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="lastName" id="lastName" class="form-control input-sm" />
+                    <form:input type="text" path="lastName" id="lastName" class="form-control input-sm"  required="required" />
                     <div class="has-error">
                         <form:errors path="lastName" class="help-inline"/>
                     </div>
@@ -41,7 +41,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="userName">User Name</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="userName" id="userName" class="form-control input-sm" />
+                    <form:input type="text" path="userName" id="userName" class="form-control input-sm"  required="required"  />
                     <div class="has-error">
                         <form:errors path="userName" class="help-inline"/>
                     </div>
@@ -54,7 +54,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="password">Password</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="password" id="password" class="form-control input-sm" />
+                    <form:input type="text" path="password" id="password" class="form-control input-sm"  required="required" />
                     <div class="has-error">
                         <form:errors path="password" class="help-inline"/>
                     </div>
@@ -67,7 +67,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="userGroup">User Group</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="userGroup" id="userGroup" class="form-control input-sm" />
+                    <form:input type="text" path="userGroup" id="userGroup" class="form-control input-sm"  required="required"  />
                     <div class="has-error">
                         <form:errors path="userGroup" class="help-inline"/>
                     </div>
@@ -79,7 +79,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="emailid">Email id</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="emailid" id="emailid" class="form-control input-sm" />
+                    <form:input type="email" path="emailid" id="emailid" class="form-control input-sm"  required="required" />
                     <div class="has-error">
                         <form:errors path="emailid" class="help-inline"/>
                     </div>
@@ -91,7 +91,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="role">Role</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="role" id="role" class="form-control input-sm" />
+                    <form:input type="text" path="role" id="role" class="form-control input-sm"  required="required" />
                     <div class="has-error">
                         <form:errors path="role" class="help-inline"/>
                     </div>
@@ -99,51 +99,7 @@
             </div>
         </div>
         
-        
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="isAccessGranted">IsAccess Granted</label>
-                <div class="col-md-7">
-                    <form:input type="text" path="isAccessGranted" id="isAccessGranted" class="form-control input-sm" />
-                    <div class="has-error">
-                        <form:errors path="isAccessGranted" class="help-inline"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        
- 
   
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="createDt">Create Dt</label>
-                <div class="col-md-7">
-                    <form:input type="date" path="createDt" id="createDt" class="form-control input-sm" />
-                    <div class="has-error">
-                        <form:errors path="createDt" class="help-inline"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="updateDt">Update Dt</label>
-                <div class="col-md-7">
-                    <form:input type="date" path="updateDt" id="updateDt" class="form-control input-sm" />
-                    <div class="has-error">
-                        <form:errors path="updateDt" class="help-inline"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        
-        
         <input type="submit" value="register" />
         </form:form>
         </div>
