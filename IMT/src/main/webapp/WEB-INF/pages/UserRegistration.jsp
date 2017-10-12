@@ -54,28 +54,34 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="password">Password</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="password" id="password" class="form-control input-sm"  required="required" />
+                    <form:input type="password" path="password" id="password" class="form-control input-sm"  required="required" />
                     <div class="has-error">
                         <form:errors path="password" class="help-inline"/>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="userGroup">User Group</label>
-                <div class="col-md-7">
-                    <form:input type="text" path="userGroup" id="userGroup" class="form-control input-sm"  required="required"  />
-                    <div class="has-error">
-                        <form:errors path="userGroup" class="help-inline"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
+
+
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-3 control-lable" for="userGroup">User
+						Group</label>
+					<div class="col-md-7">
+						<form:select path="userGroup" required="required">
+							<form:option value="" label="--- Select ---" />
+							<form:option value="ADMIN" label="ADMIN" />
+							<form:option value="USER" label="USER" />
+						</form:select>
+
+						<div class="has-error">
+							<form:errors path="userGroup" class="help-inline" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="emailid">Email id</label>
                 <div class="col-md-7">
