@@ -70,8 +70,13 @@
 					<div class="col-md-7">
 						<form:select path="userGroup" required="required">
 							<form:option value="" label="--- Select ---" />
-							<form:option value="ADMIN" label="ADMIN" />
-							<form:option value="USER" label="USER" />
+							<form:option value="Consumer Group" label="Consumer Group" />
+							<form:option value="SOA" label="SOA" />
+							<form:option value="RPC" label="RPC" />
+							<form:option value="Lites" label="Lites" />
+							<form:option value="Configuration Management" label="Configuration Management" />
+							<form:option value="ADMIN Support" label="ADMIN Support" />
+							
 						</form:select>
 
 						<div class="has-error">
@@ -97,7 +102,11 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="role">Role</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="role" id="role" class="form-control input-sm"  required="required" />
+                <form:select path="role" required="required">
+							<form:option value="" label="--- Select ---" />
+							<form:option value="ADMIN" label="ADMIN" />
+							<form:option value="USER" label="USER" />
+						</form:select>
                     <div class="has-error">
                         <form:errors path="role" class="help-inline"/>
                     </div>
