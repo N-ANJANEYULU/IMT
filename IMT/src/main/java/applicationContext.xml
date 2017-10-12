@@ -15,7 +15,7 @@ http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/imtdb" />
 		<property name="username" value="root" />
-		<property name="password" value="rshop12345" />
+		<property name="password" value="admin123" />
 	</bean>
 
 	<bean id="sessionFactory"
