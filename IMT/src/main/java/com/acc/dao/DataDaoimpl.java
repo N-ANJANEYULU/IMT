@@ -23,7 +23,7 @@ public class DataDaoimpl implements DataDao {
 	
 	public Integer addEntity(UserRegister userregister) throws Exception {
 		// System.out.println(userregister.getBrand());
-		System.out.println(userregister.getFirstname());
+		System.out.println(userregister.getFirstName());
 		session = sessionFactory.openSession();
 		tx = session.beginTransaction();
 		Integer id = (Integer) session.save(userregister);
@@ -37,7 +37,7 @@ public class DataDaoimpl implements DataDao {
 		// System.out.println(consumergroup.getBrand());
 
 				if (userregister.getUserid() != null) {
-					System.out.println(userregister.getFirstname());
+					System.out.println(userregister.getFirstName());
 					session = sessionFactory.openSession();
 					tx = session.beginTransaction();
 

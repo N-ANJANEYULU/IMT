@@ -12,11 +12,11 @@ import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "consumer_groups")
+@Table(name = "USER_INC")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 
-public class UserRegister  implements Serializable {
-	
+public class UserRegister implements Serializable {
+
 	private static long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
@@ -24,29 +24,35 @@ public class UserRegister  implements Serializable {
 	private Integer userid;
 
 	@Column(name = "First_Name")
-	private String firstname;
-	
+	private String firstName;
+
 	@Column(name = "Last_Name")
-	private String lastname;
-	
+	private String lastName;
+
 	@Column(name = "User_Name")
-	private String username;
-	
+	private String userName;
+
 	@Column(name = "PassWord")
-	private String password;
-	
-	@Column(name = "Group")
-	private String group;
-	
+	private String passWord;
+
+	@Column(name = "User_Group")
+	private String userGroup;
+
 	@Column(name = "EMAIL_ID")
 	private String emailid;
-	
+
 	@Column(name = "ROLE")
 	private String role;
-	
+
 	@Column(name = "ISACCESS_GRANTED")
-	private String isaccessgranted;
-	
+	private String isaccessGranted;
+
+	@Column(name = "CREATE_DT")
+	private Date createDt;
+
+	@Column(name = "Update_DT")
+	private Date updateDt;
+
 	public Integer getUserid() {
 		return userid;
 	}
@@ -55,44 +61,44 @@ public class UserRegister  implements Serializable {
 		this.userid = userid;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPassWord() {
+		return passWord;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
 	}
 
-	public String getGroup() {
-		return group;
+	public String getUserGroup() {
+		return userGroup;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setUserGroup(String userGroup) {
+		this.userGroup = userGroup;
 	}
 
 	public String getEmailid() {
@@ -111,22 +117,29 @@ public class UserRegister  implements Serializable {
 		this.role = role;
 	}
 
-	public String getIsaccessgranted() {
-		return isaccessgranted;
+	public String getIsaccessGranted() {
+		return isaccessGranted;
 	}
 
-	public void setIsaccessgranted(String isaccessgranted) {
-		this.isaccessgranted = isaccessgranted;
+	public void setIsaccessGranted(String isaccessGranted) {
+		this.isaccessGranted = isaccessGranted;
 	}
 
-	public Date getCreatedt() {
-		return createdt;
+	public Date getCreateDt() {
+		return createDt;
 	}
 
-	public void setCreatedt(Date createdt) {
-		this.createdt = createdt;
+	public void setCreateDt(Date createDt) {
+		this.createDt = createDt;
 	}
 
-	@Column(name = "CREATE_DT")
-	private Date createdt;
+	public Date getUpdateDt() {
+		return updateDt;
+	}
+
+	public void setUpdateDt(Date updateDt) {
+		this.updateDt = updateDt;
+	}
+
+	
 }

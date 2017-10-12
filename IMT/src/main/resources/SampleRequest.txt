@@ -1,0 +1,45 @@
+post : http://localhost:8090/SpringRestCrud/ConsumerGroup/
+
+payload
+{
+    "consumerid": 47,
+    "brand": "acc",
+    "mbu": "bengalour",
+    "region": "KA",
+    "hcid": null,
+    "firstName": null,
+    "lastName": null,
+    "dob": null,
+    "groupid": null,
+    "memberNo": null,
+    "createDt": null,
+    "createid": 4
+}
+
+
+
+
+PUT : http://localhost:8090/SpringRestCrud/ConsumerGroup/
+
+{
+    "consumergroupid": 12,
+    "consumerid": 45,
+    "brand": "tcc",
+    "mbu": "bengalour",
+    "region": "KA",
+    "hcid": null,
+    "firstName": null,
+    "lastName": null,
+    "dob": null,
+    "groupid": 24,
+    "memberNo": 25,
+    "createDt": null,
+    "createid": 4
+}
+
+
+GET http://localhost:8090/SpringRestCrud/ConsumerGroup/9
+
+GET http://localhost:8090/SpringRestCrud/ConsumerGroup/list
+
+DELETE http://localhost:8090/SpringRestCrud/ConsumerGroup/9

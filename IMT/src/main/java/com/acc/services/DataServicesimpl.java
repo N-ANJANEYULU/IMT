@@ -14,7 +14,7 @@ public class DataServicesimpl implements DataServices {
 	DataDaoimpl dataDao;
 
 	public Integer addEntity(UserRegister userregister) throws Exception {
-		System.out.println(userregister.getFirstname());
+		System.out.println(userregister.getFirstName());
 		return dataDao.addEntity(userregister);
 	}
 
