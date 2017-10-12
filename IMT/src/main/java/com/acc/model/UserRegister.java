@@ -33,7 +33,7 @@ public class UserRegister implements Serializable {
 	private String userName;
 
 	@Column(name = "PassWord")
-	private String passWord;
+	private String password;
 
 	@Column(name = "User_Group")
 	private String userGroup;
@@ -45,7 +45,7 @@ public class UserRegister implements Serializable {
 	private String role;
 
 	@Column(name = "ISACCESS_GRANTED")
-	private String isaccessGranted;
+	private String isAccessGranted;
 
 	@Column(name = "CREATE_DT")
 	private Date createDt;
@@ -85,12 +85,12 @@ public class UserRegister implements Serializable {
 		this.userName = userName;
 	}
 
-	public String getPassWord() {
-		return passWord;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getUserGroup() {
@@ -117,12 +117,14 @@ public class UserRegister implements Serializable {
 		this.role = role;
 	}
 
-	public String getIsaccessGranted() {
-		return isaccessGranted;
+	
+
+	public String getIsAccessGranted() {
+		return isAccessGranted;
 	}
 
-	public void setIsaccessGranted(String isaccessGranted) {
-		this.isaccessGranted = isaccessGranted;
+	public void setIsAccessGranted(String isAccessGranted) {
+		this.isAccessGranted = isAccessGranted;
 	}
 
 	public Date getCreateDt() {
