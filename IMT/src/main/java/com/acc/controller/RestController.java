@@ -36,8 +36,14 @@ public class RestController {
 	public @ResponseBody Status addUserRegister(@RequestBody UserRegister userregister) {
 		// System.out.println(userregister.getFirstName());
 		try {
+			if(userregister.getUserid()==null){
 			Integer userId = dataServices.addEntity(userregister);
 			return new Status(1, "UserRegister added Successfully ! Newly Generated User ID " + userId);
+			} else {
+				 dataServices.updateEntity(userregister);
+				return new Status(1, "UserRegister Updated Successfully !");
+				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new Status(0, e.toString());
