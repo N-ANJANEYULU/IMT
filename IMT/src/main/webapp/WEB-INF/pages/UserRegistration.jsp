@@ -126,7 +126,6 @@
             </div>
         </div>
         
-  
         <input type="submit" value="register" />
         </form:form>
         </div>

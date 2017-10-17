@@ -53,5 +53,6 @@
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 	<bean id="restController" class="com.acc.controller.RestController"></bean>
+	<bean id="userController" class="com.acc.controller.UserController"></bean>
 	<bean id="dataServices" class="com.acc.services.DataServicesimpl"></bean>
 </beans>

@@ -14,8 +14,13 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Entity
 @Table(name = "USER_INC")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-
 public class UserRegister implements Serializable {
+	
+	public UserRegister() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 
 	private static long serialVersionUID = 1L;
 	@Id

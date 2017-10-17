@@ -3,13 +3,14 @@ package com.acc.controller;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.metamodel.StaticMetamodel;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.acc.model.UserRegister;
 import com.acc.services.DataServices;
@@ -59,6 +60,8 @@ public class UserController {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			
+			
 			e.printStackTrace();
 		}
  		return "UserRegistration";
@@ -84,20 +87,19 @@ public class UserController {
     
      
      @RequestMapping(value="/urlist")
-     public @ResponseBody List<UserRegister> getUserRegister() {
+     public  String getUserRegister(ModelMap m) {
 
- 		List<UserRegister> userregisterList = null;
 
  		try {
- 			userregisterList = dataServices.getEntityList();
- 			if(!userregisterList.isEmpty()){
- 				
- 			}
+ 			
+ 			
+ 				m.addAttribute("userregisterList", dataServices.getEntityList());
+ 			
 
  		} catch (Exception e) {
  			e.printStackTrace();
  		}
 
- 		return userregisterList;
+ 		return "ListUsers";
  	}
 }
