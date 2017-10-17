@@ -12,9 +12,9 @@
 <body>
   <div class="generic-container">
     <div class="well lead">User Registration Form</div>
-    <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="urpost">
+    <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="/imt/urpost">
     
-    <c:if test="${userId!=null}">
+    <c:if test="${userRegistration.userid!=null}">
         <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="userid">User Id</label>
                 <div class="col-md-7">
