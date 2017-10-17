@@ -125,8 +125,13 @@
                 </div>
             </div>
         </div>
-        
+         <c:if test="${userRegistration.userid!=null}">
+        <input type="submit" value="Update" />
+        </c:if>
+        <c:if test="${userRegistration.userid==null}">
         <input type="submit" value="register" />
+        </c:if>
+        <input onclick="window.location.href='/imt/urlist'" type="button" value="back" />
         </form:form>
         </div>
         
