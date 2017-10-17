@@ -21,6 +21,8 @@ public class RestController {
 	
 	@Autowired
 	DataServices dataServices;
+	
+
 
 	public DataServices getDataServices() {
 		return dataServices;
@@ -86,7 +88,7 @@ public class RestController {
 	}
 
 	
-	/* Ger a single objct in Json form in Spring Rest Services */  
+	/* Ger a single objct in Json form in Spring Rest Services   
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody UserRegister getUserRegister(@PathVariable("id") int id) {
 
@@ -102,7 +104,7 @@ public class RestController {
 			return new UserRegister();
 		}
 		return userregister;
-	}
+	}*/
 	
 	
 	// Delete an object from DB in Spring Restful Services

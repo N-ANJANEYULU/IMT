@@ -14,17 +14,17 @@
     <div class="well lead">User Registration Form</div>
     <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="urpost">
     
-    
+    <c:if test="${userId!=null}">
         <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="userid">User Id</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="userid" id="userid" class="form-control input-sm" />
+                    <form:input type="text" path="userid" id="userid" class="form-control input-sm"   />
                      <div class="has-error">
                         <form:errors path="userid" class="help-inline"/>
                     </div> 
                 </div>
             </div>
-            
+            </c:if>
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="firstName">First Name</label>
                 <div class="col-md-7">

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,12 +31,47 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/urget")
-	public String showUserRegistrationPage(@ModelAttribute("userRegistration")UserRegister userRegistration,ModelMap m){
+	public String showUserRegistrationPage(@ModelAttribute("userRegistration") UserRegister userRegistration,ModelMap m){
 		m.addAttribute("msg","i am from UserRegister Controller");
+		/*if(id!=null){
+			
+			try {
+				userRegistration = dataServices.getEntityById(id);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}*/
 		//System.out.println( userRegistration.getFirstName());
 		
 		return "UserRegistration";
 	}
+	
+	@RequestMapping(value="/urget/{id}")
+	public String showById(@PathVariable("id") Integer id,ModelMap m){
+		System.out.println("==================UserController.showById()========================" + id);
+		m.addAttribute("msg","i am from UserRegister Controller");
+		if(id!=null){
+			
+			try {
+				m.put("userRegistration",dataServices.getEntityById(id));
+				
+				//System.out.println("User.. " + userRegistration.getUserName());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		//System.out.println( userRegistration.getFirstName());
+		
+		return "UserRegistration";
+	}
+	
+	
+	
+	
      @RequestMapping(value="/urpost",method=RequestMethod.POST)
      public String postSubmit(@ModelAttribute("userRegistration")UserRegister userRegistration,ModelMap m){
     	 m.addAttribute("msg","i am from UserRegister Controller");
@@ -102,4 +138,11 @@ public class UserController {
 
  		return "ListUsers";
  	}
+     
+    /* @ModelAttribute("userRegistration")
+     public UserRegister getUR()
+     {
+    	return  new UserRegister();
+     }*/
+     
 }

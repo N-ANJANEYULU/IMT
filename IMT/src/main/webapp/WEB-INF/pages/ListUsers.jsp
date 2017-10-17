@@ -21,7 +21,7 @@
             </tr>
             <c:forEach var="user" items="${userregisterList}">
                 <tr>
-                    <td><c:out value="${user.userid}" /></td>
+                    <td><a href="urget/${user.userid}"><c:out value="${user.userid}" /></a></td>
                     <td><c:out value="${user.firstName}" /></td>
                     <td><c:out value="${user.emailid}" /></td>
                    <%--<td><c:out value="${user.profession}" /></td>--%>
@@ -30,7 +30,7 @@
         </table>
     </div>
     <center>
-    <a href="UserMain.jsp">UserMain.jsp </a>
+    <a href="urget">Add</a>
     </center>
 </form:form>
 </body>
