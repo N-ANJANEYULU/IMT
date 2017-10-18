@@ -15,5 +15,6 @@ public interface DataDao {
 	public boolean deleteEntity(int id) throws Exception;
 
 	public boolean updateEntity(UserRegister userregister) throws Exception;
+	public UserRegister getLogin(String userName, String password) throws Exception;
 
 }

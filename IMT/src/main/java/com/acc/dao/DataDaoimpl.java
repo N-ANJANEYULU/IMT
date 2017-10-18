@@ -1,5 +1,7 @@
 package com.acc.dao;
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -74,7 +76,18 @@ public class DataDaoimpl implements DataDao {
 		return false;
 	}
 
-	
+	public UserRegister getLogin(String userName, String password) throws Exception {
+		session = sessionFactory.openSession();
+		String loginUserQuery = "from UserRegister u where u.userName=:un and u.password=:pw";
+		 Query query = session.createQuery(loginUserQuery);
+		 query.setParameter("un", userName);
+		 query.setParameter("pw", password);
+		 if(query.list().isEmpty()){
+			 return null;
+		 } else {
+			 return (UserRegister) query.list().get(0);
+		 }
+	}
 	
 	
 }

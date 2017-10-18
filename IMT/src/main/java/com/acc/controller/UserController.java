@@ -1,9 +1,6 @@
 package com.acc.controller;
 
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.metamodel.StaticMetamodel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,134 +12,149 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.acc.model.UserRegister;
 import com.acc.services.DataServices;
+
 @Controller
 public class UserController {
-	
-	
+
 	@Autowired
 	DataServices dataServices;
 
 	public DataServices getDataServices() {
 		return dataServices;
 	}
+
 	public void setDataServices(DataServices dataServices) {
 		this.dataServices = dataServices;
 	}
-	
-	
-	@RequestMapping(value="/urget")
-	public String showUserRegistrationPage(@ModelAttribute("userRegistration") UserRegister userRegistration,ModelMap m){
-		m.addAttribute("msg","i am from UserRegister Controller");
-		/*if(id!=null){
-			
-			try {
-				userRegistration = dataServices.getEntityById(id);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}*/
-		//System.out.println( userRegistration.getFirstName());
-		
+
+	@RequestMapping(value = "/urget")
+	public String showUserRegistrationPage(@ModelAttribute("userRegistration") UserRegister userRegistration,
+			ModelMap m) {
+		m.addAttribute("msg", "i am from UserRegister Controller");
+		/*
+		 * if(id!=null){
+		 * 
+		 * try { userRegistration = dataServices.getEntityById(id); } catch
+		 * (Exception e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 * 
+		 * }
+		 */
+		// System.out.println( userRegistration.getFirstName());
+
 		return "UserRegistration";
 	}
-	
-	@RequestMapping(value="/urget/{id}")
-	public String showById(@PathVariable("id") Integer id,ModelMap m){
+
+	@RequestMapping(value = "/urget/{id}")
+	public String showById(@PathVariable("id") Integer id, ModelMap m) {
 		System.out.println("==================UserController.showById()========================" + id);
-		m.addAttribute("msg","i am from UserRegister Controller");
-		if(id!=null){
-			
+		m.addAttribute("msg", "i am from UserRegister Controller");
+		if (id != null) {
+
 			try {
-				m.put("userRegistration",dataServices.getEntityById(id));
-				
-				//System.out.println("User.. " + userRegistration.getUserName());
+				m.put("userRegistration", dataServices.getEntityById(id));
+
+				// System.out.println("User.. " +
+				// userRegistration.getUserName());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
-		//System.out.println( userRegistration.getFirstName());
-		
+		// System.out.println( userRegistration.getFirstName());
+
 		return "UserRegistration";
 	}
-	
-	
-	
-	
-     @RequestMapping(value="/urpost",method=RequestMethod.POST)
-     public String postSubmit(@ModelAttribute("userRegistration")UserRegister userRegistration,ModelMap m){
-    	 m.addAttribute("msg","i am from UserRegister Controller");
- 		try {
- 			System.out.println("Post Method");
- 			userRegistration.setIsAccessGranted("No");
- 			userRegistration.setCreateDt(new Date(System.currentTimeMillis()));
- 			userRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
- 			
- 			
- 			if(userRegistration.getUserid()==null){
- 				Integer userId = dataServices.addEntity(userRegistration);
- 				System.out.println("UserRegister added Successfully ! Newly Generated User ID " + userId);
- 				} else {
- 					 dataServices.updateEntity(userRegistration);
- 					 System.out.println("UserRegister Updated Successfully !");
- 					
- 					
- 				}
- 			//dataServices.addEntity(userRegistration);
- 			
-			
+
+	@RequestMapping(value = "/urpost", method = RequestMethod.POST)
+	public String postSubmit(@ModelAttribute("userRegistration") UserRegister userRegistration, ModelMap m) {
+		m.addAttribute("msg", "i am from UserRegister Controller");
+		try {
+			System.out.println("Post Method");
+			userRegistration.setIsAccessGranted("No");
+			userRegistration.setCreateDt(new Date(System.currentTimeMillis()));
+			userRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
+
+			if (userRegistration.getUserid() == null) {
+				Integer userId = dataServices.addEntity(userRegistration);
+				System.out.println("UserRegister added Successfully ! Newly Generated User ID " + userId);
+			} else {
+				dataServices.updateEntity(userRegistration);
+				System.out.println("UserRegister Updated Successfully !");
+
+			}
+			// dataServices.addEntity(userRegistration);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			
-			
+
 			e.printStackTrace();
 		}
- 		return "UserRegistration";
-     }
-     
-     @RequestMapping(value="/urput",method=RequestMethod.PUT)
-     public String putSubmit(@ModelAttribute("userRegistration")UserRegister userRegistration,ModelMap m){
-    	 m.addAttribute("msg","i am from UserRegister Controller");
- 		try {
- 			System.out.println("Post Method");
- 			userRegistration.setIsAccessGranted("No");
- 			userRegistration.setCreateDt(new Date(System.currentTimeMillis()));
- 			userRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
- 			dataServices.updateEntity(userRegistration);
- 			
-			
+		return "UserRegistration";
+	}
+
+	@RequestMapping(value = "/urput", method = RequestMethod.PUT)
+	public String putSubmit(@ModelAttribute("userRegistration") UserRegister userRegistration, ModelMap m) {
+		m.addAttribute("msg", "i am from UserRegister Controller");
+		try {
+			System.out.println("Post Method");
+			userRegistration.setIsAccessGranted("No");
+			userRegistration.setCreateDt(new Date(System.currentTimeMillis()));
+			userRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
+			dataServices.updateEntity(userRegistration);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
- 		return "UserRegistration";
-     }
-    
-     
-     @RequestMapping(value="/urlist")
-     public  String getUserRegister(ModelMap m) {
+		return "UserRegistration";
+	}
 
+	@RequestMapping(value = "/urlist")
+	public String getUserRegister(ModelMap m) {
 
- 		try {
- 			
- 			
- 				m.addAttribute("userregisterList", dataServices.getEntityList());
- 			
+		try {
 
- 		} catch (Exception e) {
- 			e.printStackTrace();
- 		}
+			m.addAttribute("userregisterList", dataServices.getEntityList());
 
- 		return "ListUsers";
- 	}
-     
-    /* @ModelAttribute("userRegistration")
-     public UserRegister getUR()
-     {
-    	return  new UserRegister();
-     }*/
-     
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "ListUsers";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@ModelAttribute("userRegistration") UserRegister loginUser, ModelMap m) {
+		System.out.println(
+				"==================UserController.showById()========================" + loginUser.getUserName());
+		UserRegister userEntity = null;
+		m.addAttribute("msg", "i am from UserRegister Controller");
+		try {
+
+			userEntity = dataServices.getLogin(loginUser.getUserName(), loginUser.getPassword());
+
+			m.put("loginUser", userEntity);
+
+			// System.out.println("User.. " + userRegistration.getUserName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// System.out.println( userRegistration.getFirstName());
+		if (userEntity == null) {
+			return "UserRegistration";
+		} else {
+			return "Dashboard";
+		}
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(@ModelAttribute("userRegistration") UserRegister userRegistration) {
+		return "Login";
+
+	}
+
 }

@@ -11,6 +11,6 @@ public interface DataServices {
 	public List<UserRegister> getEntityList() throws Exception;
 	public boolean deleteEntity(int id) throws Exception;
 	public boolean updateEntity(UserRegister userregister) throws Exception;
-		
+	public UserRegister getLogin(String userName, String password) throws Exception;
 
 }

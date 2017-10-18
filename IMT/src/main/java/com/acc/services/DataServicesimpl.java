@@ -35,7 +35,9 @@ public class DataServicesimpl implements DataServices {
 		return dataDao.updateEntity(userregister);
 	}
 	
-	
+	public UserRegister getLogin(String userName, String password) throws Exception{
+		return dataDao.getLogin(userName, password);
+	}
 	
 
 }

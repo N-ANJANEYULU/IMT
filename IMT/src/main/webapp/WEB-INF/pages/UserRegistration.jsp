@@ -74,7 +74,6 @@
             </div>
         </div>
 
-
 			<div class="row">
 				<div class="form-group col-md-12">
 					<label class="col-md-3 control-lable" for="userGroup">User
