@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.acc.dao.DataDaoimpl;
+import com.acc.model.Incident;
 import com.acc.model.UserRegister;
 
  @Service 
@@ -38,6 +39,36 @@ public class DataServicesimpl implements DataServices {
 	public UserRegister getLogin(String userName, String password) throws Exception{
 		return dataDao.getLogin(userName, password);
 	}
+	
+	public Integer addEntity1(Incident incident) throws Exception {
+
+		return dataDao.addEntity1(incident);
+
+		}
+
+		public Incident getEntityById1(int id) throws Exception {
+
+		return dataDao.getEntityById1(id);
+
+		}
+
+		public List<Incident> getEntityList1() throws Exception {
+
+		return dataDao.getEntityList1();
+
+		}
+
+		public boolean deleteEntity1(int id) throws Exception {
+
+		return dataDao.deleteEntity1(id);
+
+		}
+
+		public boolean updateEntity1(Incident incident) throws Exception {
+
+		return dataDao.updateEntity1(incident);
+
+		}
 	
 
 }

@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.acc.model.Incident;
 import com.acc.model.UserRegister;
 
 /* @Repository */
@@ -89,5 +90,75 @@ public class DataDaoimpl implements DataDao {
 		 }
 	}
 	
+	public Integer IncidentaddEntity(Incident incident) {
+
+		session = sessionFactory.openSession();
+		tx = session.beginTransaction();
+		Integer id = (Integer) session.save(incident);
+		System.out.println("Object Created with Id " + id);
+		tx.commit();
+		session.close();
+
+		return id;
+
+		}
+
+		public boolean updateEntity(Incident incident) throws Exception {
+		// System.out.println(consumergroup.getBrand());
+
+		if (incident.getIncid() !=
+
+		null) {
+
+		session =
+
+		sessionFactory.openSession();
+
+		tx =
+
+		session.beginTransaction();
+		session.update(incident);
+
+		tx.commit();
+		session.close();
+		return true;
+
+		}
+		return false;
+
+		}
+		public Incident getEntityById(int id) throws Exception {
+		session = sessionFactory.openSession();
+		Incident incident = (Incident) session.load(Incident.class,
+
+		new Integer(id));
+
+		return incident;
+
+		}
+
+		@SuppressWarnings("unchecked")
+		public List<Incident> getEntityList1() throws Exception {
+		session = sessionFactory.openSession();
+		List<Incident> incidentList =
+
+		session.createCriteria(Incident.class).list();
+		session.close();
+		return incidentList;
+
+		}
+		public boolean deleteEntity(int id) throws Exception {
+		session = sessionFactory.openSession();
+		Object o = session.load(UserRegister.class, id);
+		tx = session.getTransaction();
+		session.beginTransaction();
+		session.delete(o);
+		tx.commit();
+		return false;
+
+		}
+
+		}
+
 	
-}
+
