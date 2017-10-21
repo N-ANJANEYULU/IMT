@@ -1,4 +1,5 @@
 package com.acc.dao;
+
 import java.util.List;
 
 import org.hibernate.Query;
@@ -23,8 +24,8 @@ public class DataDaoimpl implements DataDao {
 	Session session = null;
 
 	Transaction tx = null;
-	
-	public Integer addEntity(UserRegister userregister) throws Exception {
+
+	public Integer addUser(UserRegister userregister) throws Exception {
 		// System.out.println(userregister.getBrand());
 		System.out.println(userregister.getFirstName());
 		session = sessionFactory.openSession();
@@ -36,38 +37,41 @@ public class DataDaoimpl implements DataDao {
 
 		return id;
 	}
-	public boolean updateEntity(UserRegister userregister) throws Exception {
+
+	public boolean updateUser(UserRegister userregister) throws Exception {
 		// System.out.println(consumergroup.getBrand());
 
-				if (userregister.getUserid() != null) {
-					System.out.println(userregister.getFirstName());
-					session = sessionFactory.openSession();
-					tx = session.beginTransaction();
+		if (userregister.getUserid() != null) {
+			System.out.println(userregister.getFirstName());
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
 
-					session.update(userregister);
+			session.update(userregister);
 
-					tx.commit();
-					session.close();
-					return true;
-				}
-				return false;
-				
-				
+			tx.commit();
+			session.close();
+			return true;
+		}
+		return false;
+
 	}
-	public UserRegister getEntityById(int id) throws Exception {
+
+	public UserRegister getUserById(int id) throws Exception {
 		session = sessionFactory.openSession();
 		UserRegister userregister = (UserRegister) session.load(UserRegister.class, new Integer(id));
 		return userregister;
 	}
+
 	@SuppressWarnings("unchecked")
-	public List<UserRegister> getEntityList() throws Exception {
+	public List<UserRegister> getUserList() throws Exception {
 		session = sessionFactory.openSession();
 		List<UserRegister> userregisterList = session.createCriteria(UserRegister.class).list();
 		session.close();
 		return userregisterList;
-		
+
 	}
-	public boolean deleteEntity(int id) throws Exception {
+
+	public boolean deleteUser(int id) throws Exception {
 		session = sessionFactory.openSession();
 		Object o = session.load(UserRegister.class, id);
 		tx = session.getTransaction();
@@ -80,17 +84,17 @@ public class DataDaoimpl implements DataDao {
 	public UserRegister getLogin(String userName, String password) throws Exception {
 		session = sessionFactory.openSession();
 		String loginUserQuery = "from UserRegister u where u.userName=:un and u.password=:pw";
-		 Query query = session.createQuery(loginUserQuery);
-		 query.setParameter("un", userName);
-		 query.setParameter("pw", password);
-		 if(query.list().isEmpty()){
-			 return null;
-		 } else {
-			 return (UserRegister) query.list().get(0);
-		 }
+		Query query = session.createQuery(loginUserQuery);
+		query.setParameter("un", userName);
+		query.setParameter("pw", password);
+		if (query.list().isEmpty()) {
+			return null;
+		} else {
+			return (UserRegister) query.list().get(0);
+		}
 	}
-	
-	public Integer IncidentaddEntity(Incident incident) {
+
+	public Integer addIncident(Incident incident) {
 
 		session = sessionFactory.openSession();
 		tx = session.beginTransaction();
@@ -101,64 +105,64 @@ public class DataDaoimpl implements DataDao {
 
 		return id;
 
-		}
+	}
 
-		public boolean updateEntity(Incident incident) throws Exception {
+	public boolean updateIncident(Incident incident) throws Exception {
 		// System.out.println(consumergroup.getBrand());
 
 		if (incident.getIncid() !=
 
 		null) {
 
-		session =
+			session =
 
-		sessionFactory.openSession();
+					sessionFactory.openSession();
 
-		tx =
+			tx =
 
-		session.beginTransaction();
-		session.update(incident);
+					session.beginTransaction();
+			session.update(incident);
 
-		tx.commit();
-		session.close();
-		return true;
+			tx.commit();
+			session.close();
+			return true;
 
 		}
 		return false;
 
-		}
-		public Incident getEntityById(int id) throws Exception {
+	}
+
+	public Incident getIncidentById(int id) throws Exception {
 		session = sessionFactory.openSession();
 		Incident incident = (Incident) session.load(Incident.class,
 
-		new Integer(id));
+				new Integer(id));
 
 		return incident;
 
-		}
+	}
 
-		@SuppressWarnings("unchecked")
-		public List<Incident> getEntityList1() throws Exception {
+	@SuppressWarnings("unchecked")
+	public List<Incident> getIncidentList() throws Exception {
 		session = sessionFactory.openSession();
 		List<Incident> incidentList =
 
-		session.createCriteria(Incident.class).list();
+				session.createCriteria(Incident.class).list();
 		session.close();
 		return incidentList;
 
-		}
-		public boolean deleteEntity(int id) throws Exception {
+	}
+
+	public boolean deleteIncident(int id) throws Exception {
 		session = sessionFactory.openSession();
-		Object o = session.load(UserRegister.class, id);
+		Object o = session.load(Incident.class, id);
 		tx = session.getTransaction();
 		session.beginTransaction();
 		session.delete(o);
 		tx.commit();
 		return false;
 
-		}
+	}
 
-		}
 
-	
-
+}

@@ -17,7 +17,7 @@ import com.acc.services.DataServices;
 
 @Controller
 @RequestMapping("/UserRegister")
-public class RestController {
+public class UserRestController {
 	
 	@Autowired
 	DataServices dataServices;
@@ -31,7 +31,7 @@ public class RestController {
 		this.dataServices = dataServices;
 	}
 
-	static final Logger logger = Logger.getLogger(RestController.class);
+	static final Logger logger = Logger.getLogger(UserRestController.class);
 	
 	/* Submit form in Spring Restful Services */
 	@RequestMapping( method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -39,10 +39,10 @@ public class RestController {
 		// System.out.println(userregister.getFirstName());
 		try {
 			if(userregister.getUserid()==null){
-			Integer userId = dataServices.addEntity(userregister);
+			Integer userId = dataServices.addUser(userregister);
 			return new Status(1, "UserRegister added Successfully ! Newly Generated User ID " + userId);
 			} else {
-				 dataServices.updateEntity(userregister);
+				 dataServices.updateUser(userregister);
 				return new Status(1, "UserRegister Updated Successfully !");
 				
 			}
@@ -53,12 +53,12 @@ public class RestController {
 		
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	/*@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Status updateUserRegister(@RequestBody UserRegister userregister) {
 		// System.out.println(userregister.getFirstName());
 		try {
 
-			boolean isUpdated = dataServices.updateEntity(userregister);
+			boolean isUpdated = dataServices.updateUser(userregister);
 			if (isUpdated)
 				return new Status(1, "UserRegister Updated Successfully !");
 			else {
@@ -69,7 +69,7 @@ public class RestController {
 			return new Status(0,"UserRegister Updation Failed !"+ e.getMessage());
 		}
 
-	}
+	}*/
 
 	/* Getting List of objects in Json format in Spring Restful Services */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -78,7 +78,7 @@ public class RestController {
 		List<UserRegister> userregisterList = null;
 
 		try {
-			userregisterList = dataServices.getEntityList();
+			userregisterList = dataServices.getUserList();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,14 +88,14 @@ public class RestController {
 	}
 
 	
-	/* Ger a single objct in Json form in Spring Rest Services   
+	/* Ger a single objct in Json form in Spring Rest Services   */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody UserRegister getUserRegister(@PathVariable("id") int id) {
+	public @ResponseBody UserRegister getUserRegisterById(@PathVariable("id") int id) {
 
 		UserRegister userregister = null;
 
 		try {
-			userregister = dataServices.getEntityById(id);
+			userregister = dataServices.getUserById(id);
 
 		
 		} catch (Exception e) {
@@ -104,16 +104,16 @@ public class RestController {
 			return new UserRegister();
 		}
 		return userregister;
-	}*/
+	}
 	
-	
-	// Delete an object from DB in Spring Restful Services
+	/*
+	// Delete an object from DB in Spring Restful Services*/
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody Status deleteUserRegister(@PathVariable("id") int id) {
 
 		try {
 
-			dataServices.deleteEntity(id);
+			dataServices.deleteUser(id);
 			return new Status(1, "UserRegister deleted Successfully !");
 		} catch (Exception e) {
 			e.printStackTrace();

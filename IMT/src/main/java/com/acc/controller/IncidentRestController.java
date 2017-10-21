@@ -30,7 +30,7 @@ public class IncidentRestController {
 		this.dataServices = dataServices;
 	}
 
-	static final Logger logger = Logger.getLogger(RestController.class);
+	static final Logger logger = Logger.getLogger(UserRestController.class);
 
 	/* Submit form in Spring Restful Services */
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -38,13 +38,13 @@ public class IncidentRestController {
 		// System.out.println(userregister.getFirstName());
 		try {
 			if (incident.getIncid() == null) {
-				Integer incid = dataServices.IncidentaddEntity(incident);
+				Integer incid = dataServices.addIncident(incident);
 				return new Status(1, "Incident added Successfully ! Newly Generated INC ID "
 
 						+ incid);
 
 			} else {
-				dataServices.updateEntity(incident);
+				dataServices.updateIncident(incident);
 				return new Status(1, "Incident Updated Successfully !");
 
 			}
@@ -60,7 +60,7 @@ public class IncidentRestController {
 	// System.out.println(userregister.getFirstName());
 	try {
 
-	boolean isUpdated = dataServices.updateEntity(incident);
+	boolean isUpdated = dataServices.updateIncident(incident);
 	if (isUpdated)
 	return new Status(1, "Incident Updated Successfully !");
 	else {
@@ -81,7 +81,7 @@ public class IncidentRestController {
 		List<Incident> incidentList = null;
 
 		try {
-			incidentList = dataServices.IncidentgetEntityList();
+			incidentList = dataServices.getIncidentList();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,7 +97,7 @@ public class IncidentRestController {
 	Incident incident = null;
 
 	try {
-	incident = dataServices.IncidentgetEntityById(id);
+	incident = dataServices.getIncidentById(id);
 
 	} catch (Exception e) {
 
@@ -113,7 +113,7 @@ public class IncidentRestController {
 
 		try {
 
-			 dataServices.deleteEntity(id);
+			 dataServices.deleteIncident(id);
 			return new Status(1, "UserRegister deleted Successfully !");
 		} catch (Exception e) {
 			e.printStackTrace();

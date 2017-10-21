@@ -6,26 +6,26 @@ import com.acc.model.Incident;
 import com.acc.model.UserRegister;
 
 public interface DataDao {
-	
-	public Integer addEntity(UserRegister userregister) throws Exception;
 
-	public UserRegister getEntityById(int id) throws Exception;
+	public Integer addUser(UserRegister userregister) throws Exception;
 
-	public List<UserRegister> getEntityList() throws Exception;
+	public UserRegister getUserById(int id) throws Exception;
 
-	public boolean deleteEntity(int id) throws Exception;
+	public List<UserRegister> getUserList() throws Exception;
 
-	public boolean updateEntity(UserRegister userregister) throws Exception;
+	public boolean deleteUser(int id) throws Exception;
+
+	public boolean updateUser(UserRegister userregister) throws Exception;
+
 	public UserRegister getLogin(String userName, String password) throws Exception;
 
-	
-	public Integer addEntity1(Incident incident) throws Exception;
+	public Integer addIncident(Incident incident) throws Exception;
 
-	public Incident getEntityById1(int id) throws Exception;
+	public Incident getIncidentById(int id) throws Exception;
 
-	public List<Incident> getEntityList1() throws Exception;
+	public List<Incident> getIncidentList() throws Exception;
 
-	public boolean deleteEntity1(int id) throws Exception;
+	public boolean deleteIncident(int id) throws Exception;
 
-	public boolean updateEntity1(Incident incident) throws Exception;
+	public boolean updateIncident(Incident incident) throws Exception;
 }

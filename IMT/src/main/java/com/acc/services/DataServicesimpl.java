@@ -14,61 +14,62 @@ public class DataServicesimpl implements DataServices {
 	@Autowired
 	DataDaoimpl dataDao;
 
-	public Integer addEntity(UserRegister userregister) throws Exception {
-		System.out.println(userregister.getFirstName());
-		return dataDao.addEntity(userregister);
+	@Override
+	public Integer addUser(UserRegister userregister) throws Exception {
+		return dataDao.addUser(userregister);
 	}
 
-	public UserRegister getEntityById(int id) throws Exception {
-
-		return dataDao.getEntityById(id);
+	@Override
+	public UserRegister getUserById(int id) throws Exception {
+		return dataDao.getUserById(id);
 	}
 
-	public List<UserRegister> getEntityList() throws Exception {
-		return dataDao.getEntityList();
+	@Override
+	public List<UserRegister> getUserList() throws Exception {
+		return dataDao.getUserList();
 	}
 
-	public boolean deleteEntity(int id) throws Exception {
-		return dataDao.deleteEntity(id);
+	@Override
+	public boolean deleteUser(int id) throws Exception {
+		return dataDao.deleteUser(id);
 	}
 
-	public boolean updateEntity(UserRegister userregister) throws Exception {
-		return dataDao.updateEntity(userregister);
+	@Override
+	public boolean updateUser(UserRegister userregister) throws Exception {
+		return dataDao.updateUser(userregister);
 	}
-	
-	public UserRegister getLogin(String userName, String password) throws Exception{
+
+	@Override
+	public UserRegister getLogin(String userName, String password) throws Exception {
 		return dataDao.getLogin(userName, password);
 	}
+
+	@Override
+	public Integer addIncident(Incident incident) throws Exception {
+		return dataDao.addIncident(incident);
+	}
+
+	@Override
+	public Incident getIncidentById(int id) throws Exception {
+		return dataDao.getIncidentById(id);
+	}
+
+	@Override
+	public List<Incident> getIncidentList() throws Exception {
+		return dataDao.getIncidentList();
+	}
+
+	@Override
+	public boolean deleteIncident(int id) throws Exception {
+		return dataDao.deleteIncident(id);
+	}
+
+	@Override
+	public boolean updateIncident(Incident incident) throws Exception {
+		return dataDao.updateIncident(incident);
+	}
+
 	
-	public Integer addEntity1(Incident incident) throws Exception {
-
-		return dataDao.addEntity1(incident);
-
-		}
-
-		public Incident getEntityById1(int id) throws Exception {
-
-		return dataDao.getEntityById1(id);
-
-		}
-
-		public List<Incident> getEntityList1() throws Exception {
-
-		return dataDao.getEntityList1();
-
-		}
-
-		public boolean deleteEntity1(int id) throws Exception {
-
-		return dataDao.deleteEntity1(id);
-
-		}
-
-		public boolean updateEntity1(Incident incident) throws Exception {
-
-		return dataDao.updateEntity1(incident);
-
-		}
 	
 
 }

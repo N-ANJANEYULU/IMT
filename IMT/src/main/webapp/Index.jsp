@@ -1,5 +1,5 @@
 
-<jsp:forward page="registration"></jsp:forward>
+<jsp:forward page="login"></jsp:forward>
 
 
 
