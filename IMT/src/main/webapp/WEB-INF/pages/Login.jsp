@@ -11,7 +11,7 @@
 <body>
 
 <div class="generic-container">
-    <div class="well lead">User Registration Form</div>
+    <div class="well lead">Login</div>
     <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="login">
     
 

@@ -21,9 +21,9 @@
             </tr>
             <c:forEach var="user" items="${userregisterList}">
                 <tr>
-                    <td><a href="urget/${user.userid}"><c:out value="${user.userid}" /></a></td>
+                    <td><a href="urget/${user.userId}"><c:out value="${user.userId}" /></a></td>
                     <td><c:out value="${user.firstName}" /></td>
-                    <td><c:out value="${user.emailid}" /></td>
+                    <td><c:out value="${user.emailId}" /></td>
                    <%--<td><c:out value="${user.profession}" /></td>--%>
                 </tr>
             </c:forEach>

@@ -19,38 +19,39 @@ body {
 
 	<div class="generic-container">
 
-		<div class="well lead">User Registration Form</div>
-		<form:form method="POST" modelAttribute="userRegistration"
-			class="form-horizontal" action="urpost">
+		<div class="well lead">Incident Entry</div>
+		<form:form method="POST" modelAttribute="incRegistration"class="form-horizontal" action="incpost">
 
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="incid">INC ID</label>
+				<label class="col-md-3 control-lable" for="incId">INC ID</label>
 
 				<div class="col-md-7">
-					<form:input type="text" path="incid" id="incid"
+					<form:input type="text" path="incId" id="incId"
 						class="form-control input-sm" />
 
 					<div class="has-error">
 
-						<form:errors path="incid" class="help-inline" />
+						<form:errors path="incId" class="help-inline" />
 
 					</div>
 					
                    </div>
-                   
-				</div>
+                
+                </div>
 
 			</div>
+			
+			
 			<div class="form-group col-md-12">
-				<label class="col-md-3  control-lable" for="userid">User Id</label>
+				<label class="col-md-3  control-lable" for="userInc.userId">User Id</label>
 
 				<div class="col-md-7">
-					<form:input type="text" path="userid" id="userid"
+					<form:input type="text" path="userInc.userId" id="userInc.userId"
 						class="form-control input-sm" />
 
 					<div class="has-error">
 
-						<form:errors path="userid" class="help-inline" />
+						<form:errors path="userInc.userId" class="help-inline" />
 
 					</div>
 
@@ -83,7 +84,13 @@ body {
 				</div>
 
 			</div>
-
+	  <c:if test="${incident.incId!=null}">
+        <input type="submit" value="Update" />
+        </c:if>
+        <c:if test="${incident.incId==null}">
+        <input type="submit" value="register" />
+        </c:if>
+        <input onclick="window.location.href='/imt/urlist'" type="button" value="back" />
 		</form:form>
 </body>
 </html>

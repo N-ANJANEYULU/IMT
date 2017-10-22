@@ -16,7 +16,7 @@ background-color: lightblue;
 <body>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>IncidentListpage</title>
+<title>List of Incidents</title>
 </head>
 <body>
 
@@ -25,15 +25,16 @@ background-color: lightblue;
 
 <table border="1" cellpadding="5">
 
-<caption><h2>List ofusers</h2></caption>
+<caption><h2>List of Incidents</h2></caption>
 <tr>
 
 <th>ID</th>
 
 </tr>
-<c:forEach var="user"items="${incidentList}">
+<c:forEach var="user"items="${incRegistration}">
 <tr>
-<td><a href="urget/${user.incid}"><c:out value="${user.incid}" /></a></td>
+<td><a href="urget/${incRegistration.incid}"><c:out value="${incRegistration.incid}" /></a></td>
+<td><a href="urget/${incRegistration.incid}"><c:out value="${incRegistration.incid}" /></a></td>
 
 </tr>
 </c:forEach>
@@ -43,7 +44,7 @@ background-color: lightblue;
 </div>
 <center>
 
-<a href="urget">Add</a>
+<a href="incget">Add</a>
 
 </center>
 

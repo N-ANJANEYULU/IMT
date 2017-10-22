@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.acc.dao.DataDaoimpl;
-import com.acc.model.Incident;
-import com.acc.model.UserRegister;
+import com.acc.model.IncHistLog;
+import com.acc.model.IncidentLog;
+import com.acc.model.UserInc;
 
  @Service 
 public class DataServicesimpl implements DataServices {
@@ -15,17 +16,17 @@ public class DataServicesimpl implements DataServices {
 	DataDaoimpl dataDao;
 
 	@Override
-	public Integer addUser(UserRegister userregister) throws Exception {
-		return dataDao.addUser(userregister);
+	public Integer addUser(UserInc userInc) throws Exception {
+		return dataDao.addUser(userInc);
 	}
 
 	@Override
-	public UserRegister getUserById(int id) throws Exception {
+	public UserInc getUserById(int id) throws Exception {
 		return dataDao.getUserById(id);
 	}
 
 	@Override
-	public List<UserRegister> getUserList() throws Exception {
+	public List<UserInc> getUserList() throws Exception {
 		return dataDao.getUserList();
 	}
 
@@ -35,27 +36,27 @@ public class DataServicesimpl implements DataServices {
 	}
 
 	@Override
-	public boolean updateUser(UserRegister userregister) throws Exception {
-		return dataDao.updateUser(userregister);
+	public boolean updateUser(UserInc userInc) throws Exception {
+		return dataDao.updateUser(userInc);
 	}
 
 	@Override
-	public UserRegister getLogin(String userName, String password) throws Exception {
+	public UserInc getLogin(String userName, String password) throws Exception {
 		return dataDao.getLogin(userName, password);
 	}
 
 	@Override
-	public Integer addIncident(Incident incident) throws Exception {
-		return dataDao.addIncident(incident);
+	public Integer addIncident(IncidentLog incidentLog) throws Exception {
+		return dataDao.addIncident(incidentLog);
 	}
 
 	@Override
-	public Incident getIncidentById(int id) throws Exception {
+	public IncidentLog getIncidentById(int id) throws Exception {
 		return dataDao.getIncidentById(id);
 	}
 
 	@Override
-	public List<Incident> getIncidentList() throws Exception {
+	public List<IncidentLog> getIncidentList() throws Exception {
 		return dataDao.getIncidentList();
 	}
 
@@ -65,8 +66,40 @@ public class DataServicesimpl implements DataServices {
 	}
 
 	@Override
-	public boolean updateIncident(Incident incident) throws Exception {
-		return dataDao.updateIncident(incident);
+	public boolean updateIncident(IncidentLog incidentLog) throws Exception {
+		return dataDao.updateIncident(incidentLog);
+	}
+
+
+	@Override
+	public Integer addIncidenthist(IncHistLog incHistLog) throws Exception {
+		
+		return dataDao.addIncidenthist(incHistLog);
+	}
+
+	@Override
+	public IncHistLog getIncidenthistById(int id) throws Exception {
+		
+		return dataDao.getIncidenthistById(id);
+	}
+
+	@Override
+	public List<IncHistLog> getIncidenthistList() throws Exception {
+		
+		return dataDao.getIncidenthistList() ;
+	}
+
+	@Override
+	public boolean deleteIncidenthist(int id) throws Exception {
+		
+		return dataDao.deleteIncidenthist(id);
+	}
+
+	@Override
+	public boolean updateIncidenthist(IncHistLog incHistLog) throws Exception {
+		
+		return dataDao.updateIncidenthist(incHistLog) ;
+		
 	}
 
 	

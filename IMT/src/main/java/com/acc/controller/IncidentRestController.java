@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.acc.model.Incident;
+import com.acc.model.IncidentLog;
 import com.acc.services.DataServices;
 
 @Controller
@@ -34,10 +34,10 @@ public class IncidentRestController {
 
 	/* Submit form in Spring Restful Services */
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Status addIncident(@RequestBody Incident incident) {
+	public @ResponseBody Status addIncident(@RequestBody IncidentLog incident) {
 		// System.out.println(userregister.getFirstName());
 		try {
-			if (incident.getIncid() == null) {
+			if (incident.getIncId() == null) {
 				Integer incid = dataServices.addIncident(incident);
 				return new Status(1, "Incident added Successfully ! Newly Generated INC ID "
 
@@ -56,29 +56,29 @@ public class IncidentRestController {
 
 	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 
-	public @ResponseBody Status updateIncident(@RequestBody Incident incident) {
-	// System.out.println(userregister.getFirstName());
-	try {
+	public @ResponseBody Status updateIncident(@RequestBody IncidentLog incident) {
+		// System.out.println(userregister.getFirstName());
+		try {
 
-	boolean isUpdated = dataServices.updateIncident(incident);
-	if (isUpdated)
-	return new Status(1, "Incident Updated Successfully !");
-	else {
-	return new Status(0, "Incident Updation Failed ! NO id exist for Update");
+			boolean isUpdated = dataServices.updateIncident(incident);
+			if (isUpdated)
+				return new Status(1, "Incident Updated Successfully !");
+			else {
+				return new Status(0, "Incident Updation Failed ! NO id exist for Update");
 
-	}
-	} catch (Exception e) {
-	e.printStackTrace();
-	return new Status(0,"Incident Updation Failed !"+ e.getMessage());
-	}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Status(0, "Incident Updation Failed !" + e.getMessage());
+		}
 
 	}
 
 	/* Getting List of objects in Json format in Spring Restful Services */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public @ResponseBody List<Incident> getIncident() {
+	public @ResponseBody List<IncidentLog> getIncident() {
 
-		List<Incident> incidentList = null;
+		List<IncidentLog> incidentList = null;
 
 		try {
 			incidentList = dataServices.getIncidentList();
@@ -92,28 +92,27 @@ public class IncidentRestController {
 
 	/* Ger a single objct in Json form in Spring Rest Services */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Incident getIncident(@PathVariable("id") int id) {
+	public @ResponseBody IncidentLog getIncident(@PathVariable("id") int id) {
 
-	Incident incident = null;
+		IncidentLog incidentLog = null;
 
-	try {
-	incident = dataServices.getIncidentById(id);
+		try {
+			incidentLog = dataServices.getIncidentById(id);
 
-	} catch (Exception e) {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	e.printStackTrace();
-	return new Incident();
+		return incidentLog;
 	}
 
-	return incident;
-}
 	// Delete an object from DB in Spring Restful Services
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody Status deleteIncident(@PathVariable("id") int id) {
 
 		try {
 
-			 dataServices.deleteIncident(id);
+			dataServices.deleteIncident(id);
 			return new Status(1, "UserRegister deleted Successfully !");
 		} catch (Exception e) {
 			e.printStackTrace();

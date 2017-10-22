@@ -1,5 +1,5 @@
 
-<jsp:forward page="login"></jsp:forward>
+<jsp:forward page="/imt/login"></jsp:forward>
 
 
 

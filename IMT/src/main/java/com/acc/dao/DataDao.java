@@ -2,30 +2,46 @@ package com.acc.dao;
 
 import java.util.List;
 
-import com.acc.model.Incident;
-import com.acc.model.UserRegister;
+import com.acc.model.IncHistLog;
+import com.acc.model.IncidentLog;
+import com.acc.model.UserInc;
 
 public interface DataDao {
 
-	public Integer addUser(UserRegister userregister) throws Exception;
+	public Integer addUser(UserInc userInc) throws Exception;
 
-	public UserRegister getUserById(int id) throws Exception;
+	public UserInc getUserById(int id) throws Exception;
 
-	public List<UserRegister> getUserList() throws Exception;
+	public List<UserInc> getUserList() throws Exception;
 
 	public boolean deleteUser(int id) throws Exception;
 
-	public boolean updateUser(UserRegister userregister) throws Exception;
+	public boolean updateUser(UserInc userInc) throws Exception;
 
-	public UserRegister getLogin(String userName, String password) throws Exception;
+	public UserInc getLogin(String userName, String password) throws Exception;
 
-	public Integer addIncident(Incident incident) throws Exception;
+	public Integer addIncident(IncidentLog incidentLog) throws Exception;
 
-	public Incident getIncidentById(int id) throws Exception;
+	public IncidentLog getIncidentById(int id) throws Exception;
 
-	public List<Incident> getIncidentList() throws Exception;
+	public List<IncidentLog> getIncidentList() throws Exception;
 
 	public boolean deleteIncident(int id) throws Exception;
 
-	public boolean updateIncident(Incident incident) throws Exception;
+	public boolean updateIncident(IncidentLog incidentLog) throws Exception;
+
+	
+	public Integer addIncidenthist(IncHistLog incHistLog) throws Exception;
+
+	public IncHistLog getIncidenthistById(int id) throws Exception;
+
+	public List<IncHistLog> getIncidenthistList() throws Exception;
+
+	public boolean deleteIncidenthist(int id) throws Exception;
+
+	public boolean updateIncidenthist(IncHistLog incHistLog) throws Exception;
+
+	
+	
+	
 }

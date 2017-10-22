@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.acc.model.UserRegister;
+import com.acc.model.UserInc;
 import com.acc.services.DataServices;
 
 @Controller
@@ -28,7 +28,7 @@ public class UserJSPController {
 	}
 
 	@RequestMapping(value = "/urget")
-	public String showUserRegistrationPage(@ModelAttribute("userRegistration") UserRegister userRegistration,
+	public String showUserRegistrationPage(@ModelAttribute("userRegistration") UserInc userRegistration,
 			ModelMap m) {
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		/*
@@ -68,19 +68,19 @@ public class UserJSPController {
 	}
 
 	@RequestMapping(value = "/urpost", method = RequestMethod.POST)
-	public String addorUpdateUser(@ModelAttribute("userRegistration") UserRegister userRegistration, ModelMap m) {
+	public String addorUpdateUser(@ModelAttribute("userRegistration") UserInc userInc, ModelMap m) {
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		try {
 			System.out.println("Post Method");
-			userRegistration.setIsAccessGranted("No");
-			userRegistration.setCreateDt(new Date(System.currentTimeMillis()));
-			userRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
+			userInc.setIsaccessGranted("No");
+			userInc.setCreateDt(new Date(System.currentTimeMillis()));
+			userInc.setUpdateDt(new Date(System.currentTimeMillis()));
 
-			if (userRegistration.getUserid() == null) {
-				Integer userId = dataServices.addUser(userRegistration);
+			if (userInc.getUserId() == null) {
+				Integer userId = dataServices.addUser(userInc);
 				System.out.println("UserRegister added Successfully ! Newly Generated User ID " + userId);
 			} else {
-				dataServices.updateUser(userRegistration);
+				dataServices.updateUser(userInc);
 				System.out.println("UserRegister Updated Successfully !");
 
 			}
@@ -95,14 +95,14 @@ public class UserJSPController {
 	}
 
 	@RequestMapping(value = "/urput", method = RequestMethod.PUT)
-	public String updateUser(@ModelAttribute("userRegistration") UserRegister userRegistration, ModelMap m) {
+	public String updateUser(@ModelAttribute("userRegistration") UserInc userInc, ModelMap m) {
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		try {
 			System.out.println("Post Method");
-			userRegistration.setIsAccessGranted("No");
-			userRegistration.setCreateDt(new Date(System.currentTimeMillis()));
-			userRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
-			dataServices.updateUser(userRegistration);
+			userInc.setIsaccessGranted("No");
+			userInc.setCreateDt(new Date(System.currentTimeMillis()));
+			userInc.setUpdateDt(new Date(System.currentTimeMillis()));
+			dataServices.updateUser(userInc);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -126,14 +126,14 @@ public class UserJSPController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@ModelAttribute("userRegistration") UserRegister loginUser, ModelMap m) {
+	public String login(@ModelAttribute("userRegistration") UserInc userInc, ModelMap m) {
 		System.out.println(
-				"==================UserController.showById()========================" + loginUser.getUserName());
-		UserRegister userEntity = null;
+				"==================UserController.showById()========================" + userInc.getUserName());
+		UserInc userEntity = null;
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		try {
 
-			userEntity = dataServices.getLogin(loginUser.getUserName(), loginUser.getPassword());
+			userEntity = dataServices.getLogin(userInc.getUserName(), userInc.getPassword());
 
 			m.put("loginUser", userEntity);
 
@@ -152,7 +152,7 @@ public class UserJSPController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(@ModelAttribute("userRegistration") UserRegister userRegistration) {
+	public String login(@ModelAttribute("userRegistration") UserInc userRegistration) {
 		return "Login";
 
 	}

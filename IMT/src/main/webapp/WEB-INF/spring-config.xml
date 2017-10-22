@@ -7,7 +7,7 @@
   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
   
-	 <context:annotation-config />
+	 <context:annotation-config/>
 	<context:component-scan base-package="com.acc.controller" />
 	<mvc:annotation-driven />
 
@@ -25,7 +25,9 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>com.acc.model.UserRegister</value>
+				<value>com.acc.model.UserInc</value>
+				<value>com.acc.model.IncidentLog</value>
+				<value>com.acc.model.IncHistLog</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -53,4 +55,5 @@
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 	<bean id="dataServices" class="com.acc.services.DataServicesimpl"></bean>
+	
 </beans>

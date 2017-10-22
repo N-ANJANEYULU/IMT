@@ -23,7 +23,7 @@ http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>com.acc.model.UserRegister</value>
+				<value>com.acc.model.UserInc</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -49,8 +49,7 @@ http://www.springframework.org/schema/context/spring-context-4.2.xsd">
    
 	
 	<bean id="restController" class="com.acc.controller.RestController"></bean> 
-	<bean id="dataDao" class="com.acc.dao.DataDaoimpl"></bean>
-	<bean id="dataServices" class="com.acc.services.DataServicesimpl"></bean>
+	
 	
 
 </beans>

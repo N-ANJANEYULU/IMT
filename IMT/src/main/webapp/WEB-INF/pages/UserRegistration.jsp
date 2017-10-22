@@ -14,13 +14,13 @@
     <div class="well lead">User Registration Form</div>
     <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="/imt/urpost">
     
-    <c:if test="${userRegistration.userid!=null}">
+    <c:if test="${userRegistration.userId!=null}">
         <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="userid">User Id</label>
+                <label class="col-md-3 control-lable" for="userId">User Id</label>
                 <div class="col-md-7">
-                    <form:input type="text" path="userid" id="userid" class="form-control input-sm"   />
+                    <form:input type="text" path="userId" id="userId" class="form-control input-sm"   />
                      <div class="has-error">
-                        <form:errors path="userid" class="help-inline"/>
+                        <form:errors path="userId" class="help-inline"/>
                     </div> 
                 </div>
             </div>
@@ -99,11 +99,11 @@
 
 			<div class="row">
             <div class="form-group col-md-12">
-                <label class="col-md-3 control-lable" for="emailid">Email id</label>
+                <label class="col-md-3 control-lable" for="emailId">Email id</label>
                 <div class="col-md-7">
-                    <form:input type="email" path="emailid" id="emailid" class="form-control input-sm"  required="required" />
+                    <form:input type="email" path="emailId" id="emailId" class="form-control input-sm"  required="required" />
                     <div class="has-error">
-                        <form:errors path="emailid" class="help-inline"/>
+                        <form:errors path="emailId" class="help-inline"/>
                     </div>
                 </div>
             </div>
@@ -124,10 +124,10 @@
                 </div>
             </div>
         </div>
-         <c:if test="${userRegistration.userid!=null}">
+         <c:if test="${userRegistration.userId!=null}">
         <input type="submit" value="Update" />
         </c:if>
-        <c:if test="${userRegistration.userid==null}">
+        <c:if test="${userRegistration.userId==null}">
         <input type="submit" value="register" />
         </c:if>
         <input onclick="window.location.href='/imt/urlist'" type="button" value="back" />
