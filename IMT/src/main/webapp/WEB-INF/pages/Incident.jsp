@@ -10,17 +10,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <style>
-body {
+body {	
 	background-color: lightblue;
 }
 </style>
 </head>
 <body>
-
+<form:form method="POST" modelAttribute="incRegistration" class="form-horizontal" action="incpost">
 	<div class="generic-container">
 
 		<div class="well lead">Incident Entry</div>
-		<form:form method="POST" modelAttribute="incRegistration"class="form-horizontal" action="incpost">
+		
 
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="incId">INC ID</label>

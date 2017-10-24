@@ -2,6 +2,8 @@ package com.acc.controller;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -126,7 +128,7 @@ public class UserJSPController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@ModelAttribute("userRegistration") UserInc userInc, ModelMap m) {
+	public String login(@ModelAttribute("userRegistration") UserInc userInc, ModelMap m, HttpSession session) {
 		System.out.println(
 				"==================UserController.showById()========================" + userInc.getUserName());
 		UserInc userEntity = null;
@@ -134,8 +136,8 @@ public class UserJSPController {
 		try {
 
 			userEntity = dataServices.getLogin(userInc.getUserName(), userInc.getPassword());
-
-			m.put("loginUser", userEntity);
+System.out.println("user Name >..." +userEntity.getFirstName());
+			session.setAttribute("loginUser", userEntity);
 
 			// System.out.println("User.. " + userRegistration.getUserName());
 		} catch (Exception e) {
