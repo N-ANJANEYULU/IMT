@@ -27,7 +27,7 @@
 </c:if>
 </c:if>
 <c:if test="${sessionScope.loginUser.isaccessGranted=='NO'}">
-<h1>You are not Authorized to access to view this page.. Please contact Admin</h1>
+<h1>You are not Authorized to view this page.. Please contact Admin</h1>
 </c:if>
 </form:form>
 </body>

@@ -17,7 +17,8 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-               <th>isaccessGranted</th>
+                <th>Role</th>
+               <th>Access Granted</th>
                <th>edit</th>
             </tr>
             <c:forEach var="user" items="${userregisterList}">
@@ -25,8 +26,10 @@
                     <td><a href="urget/${user.userId}"><c:out value="${user.userId}" /></a></td>
                     <td><c:out value="${user.firstName}" /></td>
                     <td><c:out value="${user.emailId}" /></td>
+                      <td><c:out value="${user.role}" /></td>
                    <td><c:out value="${user.isaccessGranted}" /></td>
                    <td><a href="urget/${user.userId}"><c:out value="Edit" /></a></td>
+                   
                 </tr>
             </c:forEach>
         </table>

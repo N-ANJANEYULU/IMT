@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,8 +16,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
 
 /**
  * The persistent class for the user_inc database table.
@@ -25,7 +24,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Entity
 @Table(name="user_inc")
 @NamedQuery(name="UserInc.findAll", query="SELECT u FROM UserInc u")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class UserInc implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -65,7 +63,7 @@ public class UserInc implements Serializable {
 	private String userName;
 
 	//bi-directional many-to-one association to IncidentLog
-	@OneToMany(mappedBy="userInc")
+	@OneToMany(mappedBy="userInc", fetch = FetchType.EAGER)
 	private List<IncidentLog> incidentLogs;
 
 	public UserInc() {

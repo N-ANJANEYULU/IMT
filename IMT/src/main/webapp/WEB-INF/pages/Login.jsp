@@ -39,8 +39,8 @@
             </div>
         </div>
          <input type="submit" value="Login" />
-        <input onclick="window.location.href='/imt/urget'" type="button" value="Register" />>
-         <td colspan="2"><a href="UserRegistration.jsp">Register Here</a></td>
+        <input onclick="window.location.href='/imt/urget'" type="button" value="Register" />
+       
  </form:form>
 
 </body>
