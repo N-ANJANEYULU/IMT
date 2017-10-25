@@ -10,10 +10,12 @@
 </head>
 <body>
 
-<div class="generic-container">
+
     <div class="well lead">Login</div>
     <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="login">
-    
+    <c:if test="${not empty msg}">
+   		Error: ${msg}
+	</c:if>
 
 <div class="row">
             <div class="form-group col-md-12">

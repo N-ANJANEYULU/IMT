@@ -19,9 +19,9 @@ body {
 <form:form method="POST" modelAttribute="incRegistration" class="form-horizontal" action="incpost">
 	<div class="generic-container">
 
-		<div class="well lead">Incident Entry</div>
+		<div class="well lead">Incident Entry </div>
 		
-
+<c:if test="${incRegistration.incId!=null}">
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="incId">INC ID</label>
 
@@ -38,7 +38,7 @@ body {
                    </div>
                 
                 </div>
-
+</c:if>
 			</div>
 			
 			
@@ -70,14 +70,8 @@ body {
 
 					<div class="col-md-7">
 
-						<form:input type="text" path="userGroup" id="userGroup"
+						<form:input type="text" path="userInc.userGroup" id="userGroup"
 							class="form-control input-sm" />
-
-						<div class="has-error">
-
-							<form:errors path="userGroup" class="help-inline" />
-
-						</div>
 
 					</div>
 
@@ -90,7 +84,7 @@ body {
         <c:if test="${incident.incId==null}">
         <input type="submit" value="register" />
         </c:if>
-        <input onclick="window.location.href='/imt/urlist'" type="button" value="back" />
+        <input onclick="window.location.href='/imt/inclist'" type="button" value="back" />
 		</form:form>
 </body>
 </html>

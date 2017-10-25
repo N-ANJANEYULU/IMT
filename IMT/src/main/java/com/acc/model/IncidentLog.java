@@ -17,7 +17,7 @@ public class IncidentLog implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="INC_ID")
 	private Integer incId;
 
@@ -29,8 +29,7 @@ public class IncidentLog implements Serializable {
 	@Column(name="UPDATE_DT")
 	private Date updateDt;
 
-	@Column(name="USER_GROUP")
-	private String userGroup;
+	
 
 	//bi-directional many-to-one association to IncHistLog
 	@OneToMany(mappedBy="incidentLog")
@@ -74,13 +73,7 @@ public class IncidentLog implements Serializable {
 		this.updateDt = updateDt;
 	}
 
-	public String getUserGroup() {
-		return this.userGroup;
-	}
-
-	public void setUserGroup(String userGroup) {
-		this.userGroup = userGroup;
-	}
+	
 
 	public List<IncHistLog> getIncHistLogs() {
 		return this.incHistLogs;

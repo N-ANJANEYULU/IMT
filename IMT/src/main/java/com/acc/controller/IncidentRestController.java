@@ -30,7 +30,7 @@ public class IncidentRestController {
 		this.dataServices = dataServices;
 	}
 
-	static final Logger logger = Logger.getLogger(UserRestController.class);
+	static final Logger logger = Logger.getLogger(IncidentRestController.class);
 
 	/* Submit form in Spring Restful Services */
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

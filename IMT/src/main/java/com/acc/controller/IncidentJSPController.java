@@ -2,6 +2,9 @@ package com.acc.controller;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,8 +33,9 @@ public class IncidentJSPController {
 	}
 
 	@RequestMapping(value = "/incget")
-	public String incdentPopulation(@ModelAttribute("incRegistration") IncidentLog incRegistration, ModelMap m) {
+	public String incdentPopulation(@ModelAttribute("incRegistration") IncidentLog incRegistration, ModelMap m, HttpSession session) {
 		m.addAttribute("msg", "i am from Incdent Controller");
+		incRegistration.setUserInc((UserInc) session.getAttribute("loginUser"));
 
 		return "Incident";
 
@@ -56,23 +60,23 @@ public class IncidentJSPController {
 		}
 		// System.out.println( userRegistration.getFirstName());
 
-		return "UserRegistration";
+		return "Incident";
 	}
 
 	@RequestMapping(value = "/incpost", method = RequestMethod.POST)
-	public String addorUpdateUser(@ModelAttribute("incRegistration") IncidentLog incRegistration, ModelMap m) {
-		m.addAttribute("msg", "i am from UserRegister Controller");
+	public String addorUpdateUser(@ModelAttribute("incRegistration") IncidentLog incRegistration, ModelMap m, HttpSession session) {
+		m.addAttribute("msg", "i am from Incident Controller");
 		try {
 			System.out.println("Post Method");
 			incRegistration.setCreateDt(new Date(System.currentTimeMillis()));
 			incRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
 
 			if (incRegistration.getIncId() == null) {
-				Integer userId = dataServices.addIncident(incRegistration);
-				System.out.println("UserRegister added Successfully ! Newly Generated User ID " + userId);
+				Integer incid = dataServices.addIncident(incRegistration);
+				m.addAttribute("msg","Incident added Successfully ! Newly Generated User ID " + incid);
 			} else {
 				dataServices.updateIncident(incRegistration);
-				System.out.println("UserRegister Updated Successfully !");
+				m.addAttribute("msg","Incident Updated Successfully !");
 
 			}
 			// dataServices.addEntity(userRegistration);
@@ -82,7 +86,7 @@ public class IncidentJSPController {
 
 			e.printStackTrace();
 		}
-		return "UserRegistration";
+		return "Incident";
 	}
 
 	/*
@@ -183,7 +187,7 @@ public class IncidentJSPController {
 		return "Incidenthist";
 	}
 
-	@RequestMapping(value = "/inchistput", method = RequestMethod.PUT)
+	/*@RequestMapping(value = "/inchistput", method = RequestMethod.PUT)
 	public String updateIncident(@ModelAttribute("userRegistration") UserInc userRegistration, ModelMap m) {
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		try {
@@ -197,6 +201,6 @@ public class IncidentJSPController {
 			e.printStackTrace();
 		}
 		return "Incidenthist";
-	}
+	}*/
 
 }

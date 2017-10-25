@@ -147,8 +147,10 @@ System.out.println("user Name >..." +userEntity.getFirstName());
 
 		// System.out.println( userRegistration.getFirstName());
 		if (userEntity == null) {
-			return "UserRegistration";
+			m.addAttribute("msg", "Login Failed - Username and/or Password is incorrect");
+			return "Login";
 		} else {
+			
 			return "Dashboard";
 		}
 	}
