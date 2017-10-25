@@ -74,7 +74,7 @@ public class UserJSPController {
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		try {
 			System.out.println("Post Method");
-			userInc.setIsaccessGranted("No");
+			
 			userInc.setCreateDt(new Date(System.currentTimeMillis()));
 			userInc.setUpdateDt(new Date(System.currentTimeMillis()));
 

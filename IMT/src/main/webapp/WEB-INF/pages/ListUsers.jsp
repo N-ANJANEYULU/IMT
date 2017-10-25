@@ -17,14 +17,16 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-               <%--<th>Profession</th>--%>
+               <th>isaccessGranted</th>
+               <th>edit</th>
             </tr>
             <c:forEach var="user" items="${userregisterList}">
                 <tr>
                     <td><a href="urget/${user.userId}"><c:out value="${user.userId}" /></a></td>
                     <td><c:out value="${user.firstName}" /></td>
                     <td><c:out value="${user.emailId}" /></td>
-                   <%--<td><c:out value="${user.profession}" /></td>--%>
+                   <td><c:out value="${user.isaccessGranted}" /></td>
+                   <td><a href="urget/${user.userId}"><c:out value="Edit" /></a></td>
                 </tr>
             </c:forEach>
         </table>

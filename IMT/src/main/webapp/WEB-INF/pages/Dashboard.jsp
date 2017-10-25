@@ -10,6 +10,7 @@
 </head>
 <body>
 <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="/imt/urpost">
+<c:if test="${sessionScope.loginUser.isaccessGranted=='YES'}">
 <c:if test="${sessionScope.loginUser.role=='ADMIN'}">
 <br/>
 <h1>Administrator Dash Board</h1>
@@ -24,7 +25,10 @@
 <h1>User Dash Board</h1>
 <a href="/imt/inclist">Incident Management</a>
 </c:if>
-
+</c:if>
+<c:if test="${sessionScope.loginUser.isaccessGranted=='NO'}">
+<h1>You are not Authorized to access to view this page.. Please contact Admin</h1>
+</c:if>
 </form:form>
 </body>
 </html>
