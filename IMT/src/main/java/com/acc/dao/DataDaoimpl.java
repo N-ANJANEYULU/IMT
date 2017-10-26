@@ -67,7 +67,7 @@ public class DataDaoimpl implements DataDao {
 	@SuppressWarnings("unchecked")
 	public List<UserInc> getUserList() throws Exception {
 		session = sessionFactory.openSession();
-		List<UserInc> userregisterList = session.createCriteria(UserInc.class).list();
+		List<UserInc> userregisterList = session.createQuery("from UserInc").list();
 		session.close();
 		return userregisterList;
 

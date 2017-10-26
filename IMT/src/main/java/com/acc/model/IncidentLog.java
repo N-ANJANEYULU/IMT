@@ -2,6 +2,9 @@ package com.acc.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.Cascade;
+
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +35,7 @@ public class IncidentLog implements Serializable {
 	
 
 	//bi-directional many-to-one association to IncHistLog
-	@OneToMany(mappedBy="incidentLog")
+	@OneToMany(mappedBy="incidentLog", cascade=CascadeType.ALL)
 	private List<IncHistLog> incHistLogs;
 
 	//bi-directional many-to-one association to UserInc

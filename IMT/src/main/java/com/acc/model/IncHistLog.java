@@ -16,7 +16,7 @@ public class IncHistLog implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="INC_HIST_ID")
 	private Integer incHistId;
 
@@ -54,8 +54,8 @@ public class IncHistLog implements Serializable {
 	private String summary;
 
 	//bi-directional many-to-one association to IncidentLog
-	@ManyToOne
-	@JoinColumn(name="INC_ID")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="INC_ID" )
 	private IncidentLog incidentLog;
 
 	public IncHistLog() {

@@ -16,7 +16,7 @@ import com.acc.model.IncHistLog;
 import com.acc.services.DataServices;
 
 @Controller
-@RequestMapping("/inc_hist_log")
+@RequestMapping("/inchistlog")
 public class IncHistRestController {
 
 	@Autowired

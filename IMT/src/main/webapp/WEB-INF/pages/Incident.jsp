@@ -82,7 +82,7 @@ body {
         <input type="submit" value="Update" />
         </c:if>
         <c:if test="${incident.incId==null}">
-        <input type="submit" value="register" />
+        <input type="submit" value="crate Incident" />
         </c:if>
         <input onclick="window.location.href='/imt/inclist'" type="button" value="back" />
 		</form:form>

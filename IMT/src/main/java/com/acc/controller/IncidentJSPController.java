@@ -1,6 +1,7 @@
 package com.acc.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -79,6 +80,7 @@ public class IncidentJSPController {
 				m.addAttribute("msg","Incident Updated Successfully !");
 
 			}
+			session.setAttribute("incRegistration",incRegistration);
 			// dataServices.addEntity(userRegistration);
 
 		} catch (Exception e) {
@@ -86,7 +88,7 @@ public class IncidentJSPController {
 
 			e.printStackTrace();
 		}
-		return "Incident";
+		return "forward:/inchistget";
 	}
 
 	/*
@@ -118,9 +120,15 @@ public class IncidentJSPController {
 	}
 
 	@RequestMapping(value = "/inchistget")
-	public String incdenthistPopulation(@ModelAttribute("inchRegistration") IncHistLog incHistory, ModelMap m) {
-		m.addAttribute("msg", "i am from Incdent Controller");
-
+	public String incdenthistPopulation(@ModelAttribute("inchRegistration") IncHistLog incHistory, ModelMap m, HttpSession session) {
+		m.addAttribute("msg", "i am from Incdent Histroy Controller");
+		IncidentLog incRegistration = (IncidentLog) session.getAttribute("incRegistration");
+		incHistory.setIncidentLog(incRegistration);
+		UserInc loginUser = (UserInc)session.getAttribute("loginUser");
+		if(incHistory.getRequestedUser()==null){
+		incHistory.setRequestedUser(loginUser.getUserName());
+		incHistory.setRequestedGroup(loginUser.getUserGroup());
+		}
 		return "Incidenthist";
 
 	}
@@ -162,13 +170,18 @@ public class IncidentJSPController {
 	}
 
 	@RequestMapping(value = "/inchistpost", method = RequestMethod.POST)
-	public String addorUpdateIncident(@ModelAttribute("incRegistration") IncidentLog incRegistration, ModelMap m) {
+	public String addorUpdateIncident(@ModelAttribute("inchRegistration") IncHistLog inchRegistration, ModelMap m, HttpSession session) {
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		try {
 			System.out.println("Post Method");
-			incRegistration.setCreateDt(new Date(System.currentTimeMillis()));
+			IncidentLog incRegistration = (IncidentLog) session.getAttribute("incRegistration");
 			incRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
-
+			
+			if(incRegistration.getIncHistLogs()==null){
+				incRegistration.setIncHistLogs(new ArrayList<IncHistLog>());
+			}
+		incRegistration.addIncHistLog(inchRegistration);
+		
 			if (incRegistration.getIncId() == null) {
 				Integer userId = dataServices.addIncident(incRegistration);
 				System.out.println("UserRegister added Successfully ! Newly Generated User ID " + userId);

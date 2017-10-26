@@ -16,30 +16,12 @@ body {
 </style>
 </head>
 <body>
-<form:form method="POST" modelAttribute="inchRegistration" class="form-horizontal" action="incpost">
+<form:form method="POST" modelAttribute="inchRegistration" class="form-horizontal" action="inchistpost">
 <div class="generic-container">
 
-		<div class="well lead">Incident Entry</div>
+		<div class="well lead">Incident History Entry</div>
 		
 
-			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="incHistId">INC HIST ID</label>
-
-				<div class="col-md-7">
-					<form:input type="text" path="incHistId" id="incHistId"
-						class="form-control input-sm" />
-
-					<div class="has-error">
-
-						<form:errors path="incHistId" class="help-inline" />
-
-					</div>
-					
-                   </div>
-                
-                </div>
-
-			
 			
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="incId">INC ID</label>
@@ -284,7 +266,7 @@ body {
                    </div>
                 
                 </div>
-
+ <input type="submit" value="Create Incident" />
 	</form:form>
 </body>
 </html>
