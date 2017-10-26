@@ -183,6 +183,7 @@ public class IncidentJSPController {
 		incRegistration.addIncHistLog(inchRegistration);
 		
 			if (incRegistration.getIncId() == null) {
+				incRegistration.setCreateDt(new Date(System.currentTimeMillis()));
 				Integer userId = dataServices.addIncident(incRegistration);
 				System.out.println("UserRegister added Successfully ! Newly Generated User ID " + userId);
 			} else {

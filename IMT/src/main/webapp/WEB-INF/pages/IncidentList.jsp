@@ -23,14 +23,21 @@
 
 <caption><h2>List of Incidents</h2></caption>
 <tr>
-
 <th>ID</th>
+<th>Application</th>
+<th>Assigned to</th>
+<th>Comments</th>
+<th>Status</th>
 <th>Created User</th>
-<th>User Group</th>
+<th>Created User Group</th>
 </tr>
 <c:forEach var="incRegistration" items="${incList}">
 <tr>
 <td><a href="incget/${incRegistration.incId}"><c:out value="${incRegistration.incId}" /></a></td>
+<td>${incRegistration.incHistLogs[0].application}</td>
+<td>${incRegistration.incHistLogs[0].assignedTo}</td>
+<td>${incRegistration.incHistLogs[0].comments}</td>
+<td>${incRegistration.incHistLogs[0].status}</td>
 <td>${incRegistration.userInc.userName}</td>
 <td>${incRegistration.userInc.userGroup}</td>
 </tr>

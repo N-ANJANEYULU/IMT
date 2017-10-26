@@ -35,7 +35,7 @@ public class IncidentLog implements Serializable {
 	
 
 	//bi-directional many-to-one association to IncHistLog
-	@OneToMany(mappedBy="incidentLog", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="incidentLog", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<IncHistLog> incHistLogs;
 
 	//bi-directional many-to-one association to UserInc

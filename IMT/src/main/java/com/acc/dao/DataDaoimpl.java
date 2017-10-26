@@ -141,8 +141,8 @@ public class DataDaoimpl implements DataDao {
 	public List<IncidentLog> getIncidentList() throws Exception {
 		session = sessionFactory.openSession();
 		List<IncidentLog> incidentList =
-
-				session.createCriteria(IncidentLog.class).list();
+//LEFT JOIN FETCH c.wheels wheel order by wheel.location
+				session.createQuery("select distinct incLog from IncidentLog incLog LEFT JOIN FETCH incLog.incHistLogs as incHistLog Order By incHistLog.incHistId desc").list();
 		session.close();
 		return incidentList;
 
