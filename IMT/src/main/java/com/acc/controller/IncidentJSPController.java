@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,8 @@ public class IncidentJSPController {
 
 	@Autowired
 	DataServices dataServices;
-
+	
+	static final Logger logger = Logger.getLogger(IncidentJSPController.class);
 	public DataServices getDataServices() {
 		return dataServices;
 	}
@@ -35,6 +37,7 @@ public class IncidentJSPController {
 
 	@RequestMapping(value = "/incget")
 	public String incdentPopulation(@ModelAttribute("incRegistration") IncidentLog incRegistration, ModelMap m, HttpSession session) {
+		logger.debug("i am from Incdent Controller");
 		m.addAttribute("msg", "i am from Incdent Controller");
 		incRegistration.setUserInc((UserInc) session.getAttribute("loginUser"));
 

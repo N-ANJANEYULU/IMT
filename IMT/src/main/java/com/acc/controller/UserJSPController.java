@@ -136,7 +136,6 @@ public class UserJSPController {
 		try {
 
 			userEntity = dataServices.getLogin(userInc.getUserName(), userInc.getPassword());
-System.out.println("user Name >..." +userEntity.getFirstName());
 			session.setAttribute("loginUser", userEntity);
 
 			// System.out.println("User.. " + userRegistration.getUserName());
