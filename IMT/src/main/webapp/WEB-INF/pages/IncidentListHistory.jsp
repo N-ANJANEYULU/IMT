@@ -7,12 +7,12 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Incident History</title>
 </head>
 <body>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>List of Incidents</title>
+<title>History of Inidents</title>
 </head>
 <body>
 
@@ -30,7 +30,7 @@
 <th>Status</th>
 
 </tr>
-<c:forEach var="incRegistration.incHistLogs" items="${incHistLogs}">
+<c:forEach var="sessionScope.incRegistration.incHistLogs" items="${incHistLogs}">
 <tr>
 <td><a href="incget/${incId}"><c:out value="${incId}" /></a></td>
 <td>${incHistLogs.application}</td>

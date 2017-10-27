@@ -267,7 +267,13 @@ body {
                    </div>
                 
                 </div>
+ <c:if test="${inchRegistration.incidentLog.incId!=null}">
+ <input type="submit" value="Save Incident Details" />
+ </c:if>
+ <c:if test="${inchRegistration.incidentLog.incId==null}">
  <input type="submit" value="Create Incident" />
+ </c:if>
 	</form:form>
+	
 </body>
 </html>

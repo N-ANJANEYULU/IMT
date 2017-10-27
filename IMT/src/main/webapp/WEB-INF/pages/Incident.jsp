@@ -78,11 +78,11 @@ body {
 				</div>
 
 			</div>
-	  <c:if test="${incident.incId!=null}">
-        <input type="submit" value="Update" />
+	<c:if test="${incRegistration.incId!=null}">
+        <input type="submit" value="Save and Continue" />
         </c:if>
-        <c:if test="${incident.incId==null}">
-        <input type="submit" value="crate Incident" />
+        <c:if test="${incRegistration.incId==null}">
+        <input type="submit" value="Create and Continue" />
         </c:if>
         <input onclick="window.location.href='/imt/inclist'" type="button" value="back" />
 		</form:form>
