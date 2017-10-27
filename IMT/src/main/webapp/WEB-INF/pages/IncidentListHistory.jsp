@@ -21,22 +21,36 @@
 
 <table border="1" cellpadding="5">
 
-<caption><h2>List of Incidents</h2></caption>
+<caption><h2>Incident History</h2></caption>
 <tr>
 <th>ID</th>
 <th>Application</th>
 <th>Assigned to</th>
 <th>Comments</th>
 <th>Status</th>
+<th>Description</th>
+<th>Requester</th>
+<th>Req Group</th>
+<th>Severity</th>
+<th>Summary</th>
+<th>Created Date</th>
+
+
 
 </tr>
-<c:forEach var="sessionScope.incRegistration.incHistLogs" items="${incHistLogs}">
+<c:forEach var="incHistLogs" items="${incRegistration.incHistLogs}">
 <tr>
-<td><a href="incget/${incId}"><c:out value="${incId}" /></a></td>
+<td>${incHistLogs.incHistId}</td>
 <td>${incHistLogs.application}</td>
 <td>${incHistLogs.assignedTo}</td>
 <td>${incHistLogs.comments}</td>
 <td>${incHistLogs.status}</td>
+<td>${incHistLogs.description}</td>
+<td>${incHistLogs.requestedGroup}</td>
+<td>${incHistLogs.requestedUser}</td>
+<td>${incHistLogs.severiety}</td>
+<td>${incHistLogs.summary}</td>
+<td>${incHistLogs.createDt}</td>
 
 </tr>
 </c:forEach>
@@ -46,7 +60,7 @@
 </div>
 <center>
 
-<a href="incget">Add</a>
+<a href="/imt/inclist">Back</a>
 
 </center>
 

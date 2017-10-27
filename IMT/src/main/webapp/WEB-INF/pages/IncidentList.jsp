@@ -29,17 +29,17 @@
 <th>Comments</th>
 <th>Status</th>
 <th>Created User</th>
-<th>Created User Group</th>
+<th>Edit
 </tr>
 <c:forEach var="incRegistration" items="${incList}">
 <tr>
-<td><a href="incget/${incRegistration.incId}">${incRegistration.incId}</a></td>
+<td><a href="inchget/${incRegistration.incId}">${incRegistration.incId}</a></td>
 <td>${incRegistration.incHistLogs[0].application}</td>
 <td>${incRegistration.incHistLogs[0].assignedTo}</td>
 <td>${incRegistration.incHistLogs[0].comments}</td>
 <td>${incRegistration.incHistLogs[0].status}</td>
-<td>${incRegistration.userInc.userName}</td>
-<td>${incRegistration.userInc.userGroup}</td>
+<td>${incRegistration.userInc.firstName}</td>
+<td><a href="incget/${incRegistration.incId}">Edit</a></td>
 </tr>
 </c:forEach>
 

@@ -43,7 +43,7 @@ public class IncidentJSPController {
 	}
 
 	@RequestMapping(value = "/incget/{id}")
-	public String getUserById(@PathVariable("id") Integer id, ModelMap m, HttpSession session) {
+	public String getIncidentById(@PathVariable("id") Integer id, ModelMap m, HttpSession session) {
 		System.out.println("==================incident.showById()=====================" + id);
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		if (id != null) {
@@ -61,6 +61,27 @@ public class IncidentJSPController {
 		// System.out.println( userRegistration.getFirstName());
 
 		return "Incident";
+	}
+	
+	
+	@RequestMapping(value = "/inchget/{id}", method= RequestMethod.GET)
+	public String getIncidentHistory(@PathVariable("id") Integer id, ModelMap m, HttpSession session) {
+		System.out.println("==================i am from Incident History  Controller=====================" + id);
+		m.addAttribute("msg", "i am from Incident History  Controller");
+		if (id != null) {
+
+			try {
+				IncidentLog incident = dataServices.getIncidentById(id);
+				m.put("incRegistration", incident);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		// System.out.println( userRegistration.getFirstName());
+
+		return "IncidentListHistory";
 	}
 
 	@RequestMapping(value = "/incpost", method = RequestMethod.POST)
@@ -165,7 +186,9 @@ public class IncidentJSPController {
 			if(incRegistration.getIncHistLogs()==null){
 				incRegistration.setIncHistLogs(new ArrayList<IncHistLog>());
 			}
+			inchRegistration.setCreateDt(new Date(System.currentTimeMillis()));
 				incRegistration.addIncHistLog(inchRegistration);
+				
 		
 			if (incRegistration.getIncId() == null) {
 				UserInc loginUser = (UserInc)session.getAttribute("loginUser");
