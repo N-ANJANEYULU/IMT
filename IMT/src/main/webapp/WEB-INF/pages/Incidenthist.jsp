@@ -21,13 +21,13 @@ body {
 
 		<div class="well lead">Incident History Entry</div>
 		
-
+<c:if test="${inchRegistration.incidentLog.incId!=null}">
 			
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="incId">INC ID</label>
 
 				<div class="col-md-7">
-					<form:input type="text" path="incidentLog.incId" id="incId"
+					<form:input type="text" path="incidentLog.incId" id="incId" readonly="true"
 						class="form-control input-sm" />
 
 					<div class="has-error">
@@ -39,6 +39,7 @@ body {
                    </div>
                 
                 </div>
+                </c:if>
 
 			
 			<div class="form-group col-md-12">

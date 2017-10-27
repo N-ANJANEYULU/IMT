@@ -69,8 +69,6 @@ public class IncidentJSPController {
 		try {
 			System.out.println("Post Method");
 			incRegistration.setCreateDt(new Date(System.currentTimeMillis()));
-			
-
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -82,9 +80,10 @@ public class IncidentJSPController {
 
 	
 	@RequestMapping(value = "/inclist")
-	public String getIncList(ModelMap m) {
+	public String getIncList(ModelMap m, HttpSession session) {
 
 		try {
+			session.removeAttribute("incRegistration");
 
 			m.addAttribute("incList", dataServices.getIncidentList());
 
@@ -153,7 +152,7 @@ public class IncidentJSPController {
 	}
 
 	@RequestMapping(value = "/inchistpost", method = RequestMethod.POST)
-	public String addorUpdateIncident(@ModelAttribute("inchRegistration") IncHistLog inchRegistration, ModelMap m, HttpSession session) {
+	public String addorUpdateIncidentHistory(@ModelAttribute("inchRegistration") IncHistLog inchRegistration, ModelMap m, HttpSession session) {
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		try {
 			System.out.println("Post Method");
@@ -187,7 +186,7 @@ public class IncidentJSPController {
 
 			e.printStackTrace();
 		}
-		return "Incidenthist";
+		return "forward:/inclist";
 	}
 
 	/*@RequestMapping(value = "/inchistput", method = RequestMethod.PUT)
