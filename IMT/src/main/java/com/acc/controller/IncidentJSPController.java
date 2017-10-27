@@ -43,16 +43,15 @@ public class IncidentJSPController {
 	}
 
 	@RequestMapping(value = "/incget/{id}")
-	public String getUserById(@PathVariable("id") Integer id, ModelMap m) {
-		System.out.println("==================incident.showById()========================" + id);
+	public String getUserById(@PathVariable("id") Integer id, ModelMap m, HttpSession session) {
+		System.out.println("==================incident.showById()=====================" + id);
 		m.addAttribute("msg", "i am from UserRegister Controller");
 		if (id != null) {
 
 			try {
-				m.put("incidentRegister", dataServices.getIncidentById(id));
-
-				// System.out.println("User.. " +
-				// userRegistration.getUserName());
+				IncidentLog incident = dataServices.getIncidentById(id);
+				m.put("incRegistration", incident);
+				session.setAttribute("incRegistration",incident);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -65,23 +64,13 @@ public class IncidentJSPController {
 	}
 
 	@RequestMapping(value = "/incpost", method = RequestMethod.POST)
-	public String addorUpdateUser(@ModelAttribute("incRegistration") IncidentLog incRegistration, ModelMap m, HttpSession session) {
+	public String addorUpdateIncident(@ModelAttribute("incRegistration") IncidentLog incRegistration, ModelMap m, HttpSession session) {
 		m.addAttribute("msg", "i am from Incident Controller");
 		try {
 			System.out.println("Post Method");
 			incRegistration.setCreateDt(new Date(System.currentTimeMillis()));
-			incRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
+			
 
-			if (incRegistration.getIncId() == null) {
-				Integer incid = dataServices.addIncident(incRegistration);
-				m.addAttribute("msg","Incident added Successfully ! Newly Generated User ID " + incid);
-			} else {
-				dataServices.updateIncident(incRegistration);
-				m.addAttribute("msg","Incident Updated Successfully !");
-
-			}
-			session.setAttribute("incRegistration",incRegistration);
-			// dataServices.addEntity(userRegistration);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -91,20 +80,7 @@ public class IncidentJSPController {
 		return "forward:/inchistget";
 	}
 
-	/*
-	 * @RequestMapping(value = "/incput", method = RequestMethod.PUT) public
-	 * String updateUser(@ModelAttribute("userRegistration") UserRegister
-	 * userRegistration, ModelMap m) { m.addAttribute("msg",
-	 * "i am from UserRegister Controller"); try {
-	 * System.out.println("Post Method");
-	 * userRegistration.setIsAccessGranted("No");
-	 * userRegistration.setCreateDt(new Date(System.currentTimeMillis()));
-	 * userRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
-	 * dataServices.updateUser(userRegistration);
-	 * 
-	 * } catch (Exception e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } return "Incident"; }
-	 */
+	
 	@RequestMapping(value = "/inclist")
 	public String getIncList(ModelMap m) {
 
@@ -121,11 +97,18 @@ public class IncidentJSPController {
 
 	@RequestMapping(value = "/inchistget")
 	public String incdenthistPopulation(@ModelAttribute("inchRegistration") IncHistLog incHistory, ModelMap m, HttpSession session) {
+		
 		m.addAttribute("msg", "i am from Incdent Histroy Controller");
 		IncidentLog incRegistration = (IncidentLog) session.getAttribute("incRegistration");
-		incHistory.setIncidentLog(incRegistration);
+		if(incRegistration!=null && incRegistration.getIncHistLogs()!=null && !incRegistration.getIncHistLogs().isEmpty()){
+			System.out.println("I AM HISTORY GET SIZE ----------------------"  + incRegistration.getIncHistLogs().size());
+			m.addAttribute("inchRegistration",incRegistration.getIncHistLogs().get(0));
+		}
+		System.out.println("Incident Hisoty..." + incHistory.getApplication());
+		//incHistory.setIncidentLog(incRegistration);
 		UserInc loginUser = (UserInc)session.getAttribute("loginUser");
 		if(incHistory.getRequestedUser()==null){
+			
 		incHistory.setRequestedUser(loginUser.getUserName());
 		incHistory.setRequestedGroup(loginUser.getUserGroup());
 		}
@@ -175,18 +158,24 @@ public class IncidentJSPController {
 		try {
 			System.out.println("Post Method");
 			IncidentLog incRegistration = (IncidentLog) session.getAttribute("incRegistration");
+			if(incRegistration==null){
+				incRegistration = new IncidentLog();
+			}
 			incRegistration.setUpdateDt(new Date(System.currentTimeMillis()));
 			
 			if(incRegistration.getIncHistLogs()==null){
 				incRegistration.setIncHistLogs(new ArrayList<IncHistLog>());
 			}
-		incRegistration.addIncHistLog(inchRegistration);
+				incRegistration.addIncHistLog(inchRegistration);
 		
 			if (incRegistration.getIncId() == null) {
+				UserInc loginUser = (UserInc)session.getAttribute("loginUser");
+				incRegistration.setUserInc(loginUser);
 				incRegistration.setCreateDt(new Date(System.currentTimeMillis()));
 				Integer userId = dataServices.addIncident(incRegistration);
 				System.out.println("UserRegister added Successfully ! Newly Generated User ID " + userId);
 			} else {
+				
 				dataServices.updateIncident(incRegistration);
 				System.out.println("UserRegister Updated Successfully !");
 

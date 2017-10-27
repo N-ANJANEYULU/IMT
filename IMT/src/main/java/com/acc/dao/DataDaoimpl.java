@@ -108,6 +108,9 @@ public class DataDaoimpl implements DataDao {
 		return id;
 
 	}
+	
+	
+	
 
 	public boolean updateIncident(IncidentLog incidentLog) throws Exception {
 		
@@ -116,7 +119,7 @@ public class DataDaoimpl implements DataDao {
 			session =sessionFactory.openSession();
 
 			tx =session.beginTransaction();
-			session.update(incidentLog);
+			session.merge(incidentLog);
 
 			tx.commit();
 			session.close();
@@ -129,10 +132,7 @@ public class DataDaoimpl implements DataDao {
 
 	public IncidentLog getIncidentById(int id) throws Exception {
 		session = sessionFactory.openSession();
-		IncidentLog incidentLog = (IncidentLog) session.load(IncidentLog.class,
-
-				new Integer(id));
-
+		IncidentLog incidentLog = (IncidentLog) session.load(IncidentLog.class,	new Integer(id));
 		return incidentLog;
 
 	}
@@ -184,7 +184,7 @@ public class DataDaoimpl implements DataDao {
 	@SuppressWarnings("unchecked")
 	public List<IncHistLog> getIncidenthistList() throws Exception {
 		session = sessionFactory.openSession();
-		List<IncHistLog> incHistLogList = session.createCriteria(IncHistLog.class).list();
+		List<IncHistLog> incHistLogList = session.createQuery("from IncHistLog").list();
 		session.close();
 		return incHistLogList;
 	}

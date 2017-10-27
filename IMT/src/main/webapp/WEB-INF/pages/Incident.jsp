@@ -16,7 +16,7 @@ body {
 </style>
 </head>
 <body>
-<form:form method="POST" modelAttribute="incRegistration" class="form-horizontal" action="incpost">
+<form:form method="POST" modelAttribute="incRegistration" class="form-horizontal" action="/imt/incpost">
 	<div class="generic-container">
 
 		<div class="well lead">Incident Entry </div>

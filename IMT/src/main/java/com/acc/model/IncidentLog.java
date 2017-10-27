@@ -39,7 +39,7 @@ public class IncidentLog implements Serializable {
 	private List<IncHistLog> incHistLogs;
 
 	//bi-directional many-to-one association to UserInc
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="USER_ID")
 	private UserInc userInc;
 
