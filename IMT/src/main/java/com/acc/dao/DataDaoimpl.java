@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.acc.model.IncHistLog;
 import com.acc.model.IncidentLog;
+import com.acc.model.SearchCriteria;
 import com.acc.model.UserInc;
 
  /*@Repository*/
@@ -215,6 +216,19 @@ public class DataDaoimpl implements DataDao {
 
 		}
 		return false;
+	}
+
+	@Override
+	public List<IncidentLog> getIncidentList(SearchCriteria searchCriteria) throws Exception {
+		session = sessionFactory.openSession();
+		String query = "select distinct incLog from IncidentLog incLog LEFT JOIN FETCH incLog.incHistLogs as incHistLog"
+				+ " where incLog.incId=:keyword  OR incHistLog.application like :keyword OR incHistLog.status=:keyword  Order By incHistLog.incHistId desc";
+		org.hibernate.query.Query createQuery = session.createQuery(query);
+		createQuery.setString("keyword", searchCriteria.getSearchIncident());
+		List<IncidentLog> incidentList =	createQuery.list();
+		
+		session.close();
+		return incidentList;
 	}
 
 

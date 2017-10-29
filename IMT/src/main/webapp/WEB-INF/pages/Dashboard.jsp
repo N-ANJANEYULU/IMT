@@ -9,7 +9,7 @@
 <title>Dash Board</title>
 </head>
 <body>
-<form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="/imt/urpost">
+
 <c:if test="${sessionScope.loginUser.isaccessGranted=='YES'}">
 <c:if test="${sessionScope.loginUser.role=='ADMIN'}">
 <br/>
@@ -17,7 +17,14 @@
 
 <a href="/imt/urlist">User Management</a>
 <a href="/imt/inclist">Incident Management</a>
-
+<br/>
+<br/>
+<form:form method="POST" commandName="searchParam"   class="form-horizontal" action="search"> 
+<!-- <label for="mysearch2">Search Incident: </label>  -->
+	<input id="searchIncident" name="searchIncident" type="search" placeholder="Search Incident">
+ <!-- Search Incident: --><%-- <form:input path="searchIncident"></form:input> --%>
+ <input type="submit" value="Search Incident">
+</form:form>
 
 </c:if>
 <c:if test="${sessionScope.loginUser.role=='USER'}">
@@ -29,6 +36,6 @@
 <c:if test="${sessionScope.loginUser.isaccessGranted=='NO'}">
 <h1>You are not Authorized to view this page.. Please contact Admin</h1>
 </c:if>
-</form:form>
+ 
 </body>
 </html>

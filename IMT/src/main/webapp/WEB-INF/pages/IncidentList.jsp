@@ -23,7 +23,7 @@
 
 <caption><h2>List of Incidents</h2></caption>
 <tr>
-<th>ID</th>
+<th>INCID</th>
 <th>Application</th>
 <th>Assigned to</th>
 <th>Comments</th>

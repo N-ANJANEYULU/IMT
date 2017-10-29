@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.acc.model.IncHistLog;
 import com.acc.model.IncidentLog;
+import com.acc.model.SearchCriteria;
 import com.acc.model.UserInc;
 
 public interface DataServices {
@@ -26,6 +27,8 @@ public interface DataServices {
 	public IncidentLog getIncidentById(int id) throws Exception;
 
 	public List<IncidentLog> getIncidentList() throws Exception;
+	
+	public List<IncidentLog> getIncidentList(SearchCriteria searchCriteria) throws Exception;
 
 	public boolean deleteIncident(int id) throws Exception;
 

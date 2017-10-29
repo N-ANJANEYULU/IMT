@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.acc.dao.DataDaoimpl;
 import com.acc.model.IncHistLog;
 import com.acc.model.IncidentLog;
+import com.acc.model.SearchCriteria;
 import com.acc.model.UserInc;
 
  @Service 
@@ -100,6 +101,11 @@ public class DataServicesimpl implements DataServices {
 		
 		return dataDao.updateIncidenthist(incHistLog) ;
 		
+	}
+
+	@Override
+	public List<IncidentLog> getIncidentList(SearchCriteria searchCriteria) throws Exception {
+		return dataDao.getIncidentList(searchCriteria);
 	}
 
 	

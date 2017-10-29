@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.acc.model.IncHistLog;
 import com.acc.model.IncidentLog;
+import com.acc.model.SearchCriteria;
 import com.acc.model.UserInc;
 import com.acc.services.DataServices;
 
@@ -117,6 +118,23 @@ public class IncidentJSPController {
 
 		return "IncidentList";
 	}
+	
+	
+	@RequestMapping(value = "/search")
+	public String getIncListBySerach( @ModelAttribute("searchParam") SearchCriteria search, ModelMap m, HttpSession session) {
+
+		try {
+			
+			session.removeAttribute("incRegistration");
+			m.addAttribute("incList", dataServices.getIncidentList(search));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "IncidentList";
+	}
+	
 
 	@RequestMapping(value = "/inchistget")
 	public String incdenthistPopulation(@ModelAttribute("inchRegistration") IncHistLog incHistory, ModelMap m, HttpSession session) {

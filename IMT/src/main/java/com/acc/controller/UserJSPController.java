@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.acc.model.SearchCriteria;
 import com.acc.model.UserInc;
 import com.acc.services.DataServices;
 
@@ -37,7 +38,7 @@ public class UserJSPController {
 		 * if(id!=null){
 		 * 
 		 * try { userRegistration = dataServices.getEntityById(id); } catch
-		 * (Exception e) { // TODO Auto-generated catch block
+		 * (Exception e) { 
 		 * e.printStackTrace(); }
 		 * 
 		 * }
@@ -59,7 +60,7 @@ public class UserJSPController {
 				// System.out.println("User.. " +
 				// userRegistration.getUserName());
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 
@@ -89,7 +90,7 @@ public class UserJSPController {
 			// dataServices.addEntity(userRegistration);
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 
 			e.printStackTrace();
 		}
@@ -107,7 +108,7 @@ public class UserJSPController {
 			dataServices.updateUser(userInc);
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return "UserRegistration";
@@ -140,7 +141,7 @@ public class UserJSPController {
 
 			// System.out.println("User.. " + userRegistration.getUserName());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -149,6 +150,7 @@ public class UserJSPController {
 			m.addAttribute("msg", "Login Failed - Username and/or Password is incorrect");
 			return "Login";
 		} else {
+			m.addAttribute("searchCriteria" , new SearchCriteria());
 			
 			return "Dashboard";
 		}

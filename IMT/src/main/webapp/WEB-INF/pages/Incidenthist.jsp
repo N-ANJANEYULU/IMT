@@ -28,7 +28,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="incidentLog.incId" id="incId" readonly="true"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -47,7 +47,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="application" id="application"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -65,7 +65,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="hcId" id="hcId"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -83,7 +83,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="environment" id="environment"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -146,7 +146,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="summary" id="summary"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -165,7 +165,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="description" id="description"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -184,7 +184,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="assignedTo" id="assignedTo"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -202,7 +202,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="assignedGroup" id="assignedGroup"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -220,7 +220,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="requestedUser" id="requestedUser"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -238,7 +238,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="requestedGroup" id="requestedGroup"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
@@ -256,7 +256,7 @@ body {
 
 				<div class="col-md-7">
 					<form:input type="text" path="comments" id="comments"
-						class="form-control input-sm" />
+						class="form-control input-sm"/>
 
 					<div class="has-error">
 
