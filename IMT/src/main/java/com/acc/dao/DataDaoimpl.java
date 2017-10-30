@@ -222,9 +222,10 @@ public class DataDaoimpl implements DataDao {
 	public List<IncidentLog> getIncidentList(SearchCriteria searchCriteria) throws Exception {
 		session = sessionFactory.openSession();
 		String query = "select distinct incLog from IncidentLog incLog LEFT JOIN FETCH incLog.incHistLogs as incHistLog"
-				+ " where incLog.incId=:keyword  OR incHistLog.application like :keyword OR incHistLog.status=:keyword  Order By incHistLog.incHistId desc";
+				+ " where incLog.incId=:keyword  OR incHistLog.application like :keyword OR incHistLog.application like :keyword "
+				+ " OR incHistLog.comments like :keyword   OR incHistLog.description like:keyword Order By incHistLog.incHistId desc";
 		org.hibernate.query.Query createQuery = session.createQuery(query);
-		createQuery.setString("keyword", searchCriteria.getSearchIncident());
+		createQuery.setString("keyword", "%"+searchCriteria.getSearchIncident()+"%");
 		List<IncidentLog> incidentList =	createQuery.list();
 		
 		session.close();
