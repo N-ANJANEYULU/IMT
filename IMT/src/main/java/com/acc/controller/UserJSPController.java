@@ -2,9 +2,11 @@ package com.acc.controller;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -157,7 +159,28 @@ public class UserJSPController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(@ModelAttribute("userRegistration") UserInc userRegistration) {
+	public String login(@ModelAttribute("userRegistration") UserInc userRegistration, HttpServletResponse response) {
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0);
+		return "Login";
+
+	}
+	
+	
+	@RequestMapping(value = "/home")
+	public String home(@ModelAttribute("userRegistration") UserInc userRegistration, HttpServletResponse response) {
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0);
+		return "Dashboard";
+
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String login(@ModelAttribute("userRegistration") UserInc userRegistration,  HttpSession session, HttpServletResponse response) {
+		//response.setHeader(refererUrl, "no-cache");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0);
+		session.invalidate();
 		return "Login";
 
 	}

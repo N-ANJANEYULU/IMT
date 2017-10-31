@@ -1,7 +1,6 @@
 package com.acc.controller;
 
 import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -19,7 +18,7 @@ public class RestPointcut {
 	
 	@After("allControlerPointcut()")
 	public void allControllerAdviceAfter() {
-		System.out.println("After executing Service Methods");
+	
 	}
 	
 	@Before("allServicePointCut()")

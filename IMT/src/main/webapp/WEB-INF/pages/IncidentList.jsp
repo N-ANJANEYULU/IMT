@@ -17,6 +17,7 @@
 <body>
 
 <form:form class="form-horizontal">
+Welcome  ${sessionScope.loginUser.firstName}   ${sessionScope.loginUser.lastName}  <a href="/imt/logout">Logout</a>
 <div align="center">
 
 <table border="1" cellpadding="5">
@@ -49,6 +50,7 @@
 <center>
 
 <a href="incget">Add</a>
+<a href="home">Back</a>
 
 </center>
 

@@ -1,4 +1,4 @@
-
+R
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -12,9 +12,10 @@
 </head>
 <body>
   <div class="generic-container">
-    <div class="well lead">User Registration Form welcome -${sessionScope.loginUser.firstName}</div>
-    <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="/imt/urpost">
     
+    <form:form method="POST" modelAttribute="userRegistration"   class="form-horizontal" action="/imt/urpost">
+    Welcome  ${sessionScope.loginUser.firstName}   ${sessionScope.loginUser.lastName}  <a href="/imt/logout">Logout</a>
+    <h1>User Registration Form</h1>
     <c:if test="${userRegistration.userId!=null}">
         <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="userId">User Id</label>

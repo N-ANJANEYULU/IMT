@@ -7,8 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Dash Board</title>
+
 </head>
 <body>
+
+Welcome  ${sessionScope.loginUser.firstName}   ${sessionScope.loginUser.lastName}  <a href="/imt/logout">Logout</a>
 
 <c:if test="${sessionScope.loginUser.isaccessGranted=='YES'}">
 <c:if test="${sessionScope.loginUser.role=='ADMIN'}">
@@ -20,6 +23,7 @@
 <br/>
 <br/>
 <form:form method="POST" commandName="searchParam"   class="form-horizontal" action="search"> 
+
 <!-- <label for="mysearch2">Search Incident: </label>  -->
 	<input id="searchIncident" name="searchIncident" type="search" placeholder="Search Incident">
  <!-- Search Incident: --><%-- <form:input path="searchIncident"></form:input> --%>
@@ -31,6 +35,14 @@
 <br/>
 <h1>User Dash Board</h1>
 <a href="/imt/inclist">Incident Management</a>
+<br/>
+<br/>
+<form:form method="POST" commandName="searchParam"   class="form-horizontal" action="search"> 
+<!-- <label for="mysearch2">Search Incident: </label>  -->
+	<input id="searchIncident" name="searchIncident" type="search" placeholder="Search Incident">
+ <!-- Search Incident: --><%-- <form:input path="searchIncident"></form:input> --%>
+ <input type="submit" value="Search Incident">
+</form:form>
 </c:if>
 </c:if>
 <c:if test="${sessionScope.loginUser.isaccessGranted=='NO'}">

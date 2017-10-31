@@ -8,6 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
 <title>Insert title here</title>
 <style>
 body {	
@@ -16,7 +19,9 @@ body {
 </style>
 </head>
 <body>
+
 <form:form method="POST" modelAttribute="incRegistration" class="form-horizontal" action="/imt/incpost">
+Welcome  ${sessionScope.loginUser.firstName}   ${sessionScope.loginUser.lastName}  <a href="/imt/logout">Logout</a>
 	<div class="generic-container">
 
 		<div class="well lead">Incident Entry </div>
