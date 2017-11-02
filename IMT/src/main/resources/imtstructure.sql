@@ -54,7 +54,6 @@ DROP TABLE IF EXISTS `incident_log`;
 CREATE TABLE `incident_log` (
   `INC_ID` int(11) NOT NULL AUTO_INCREMENT,
   `USER_ID` int(11) NOT NULL,
-  `USER_GROUP` varchar(20) NOT NULL,
   `CREATE_DT` date DEFAULT NULL,
   `UPDATE_DT` date DEFAULT NULL,
   PRIMARY KEY (`INC_ID`),
@@ -96,3 +95,7 @@ CREATE TABLE `user_inc` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-10-22  8:57:01
+
+Insert into User_Inc(
+  USER_ID,FIRST_NAME,LAST_NAME,USER_NAME,PASSWORD,USER_GROUP,EMAIL_ID,ROLE,ISACCESS_GRANTED,CREATE_DT,UPDATE_DT)
+values(1,'Anees Ahmed','Mohammed','anees','anees','MY GROUP','anees@tm.com','ADMIN','YES', CURTIME() ,CURTIME() );
