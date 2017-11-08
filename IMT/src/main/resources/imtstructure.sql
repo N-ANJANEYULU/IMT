@@ -99,3 +99,125 @@ CREATE TABLE `user_inc` (
 Insert into User_Inc(
   USER_ID,FIRST_NAME,LAST_NAME,USER_NAME,PASSWORD,USER_GROUP,EMAIL_ID,ROLE,ISACCESS_GRANTED,CREATE_DT,UPDATE_DT)
 values(1,'Anees Ahmed','Mohammed','anees','anees','MY GROUP','anees@tm.com','ADMIN','YES', CURTIME() ,CURTIME() );
+
+
+
+
+
+
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: localhost    Database: hris
+-- ------------------------------------------------------
+-- Server version	5.5.34
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `employee`
+--
+
+DROP TABLE IF EXISTS `employee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `employee` (
+  `empid` int(11) NOT NULL,
+  `empname` varchar(45) DEFAULT NULL,
+  `designation` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`empid`),
+  UNIQUE KEY `empid_UNIQUE` (`empid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='employee table';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employee`
+--
+
+LOCK TABLES `employee` WRITE;
+/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `review`
+--
+
+DROP TABLE IF EXISTS `review`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `review` (
+  `review_id` int(11) NOT NULL,
+  `comments` varchar(45) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL,
+  `target_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`review_id`),
+  KEY `reivew_target_idx` (`target_id`),
+  CONSTRAINT `reivew_target` FOREIGN KEY (`target_id`) REFERENCES `targets` (`targetid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `review`
+--
+
+LOCK TABLES `review` WRITE;
+/*!40000 ALTER TABLE `review` DISABLE KEYS */;
+/*!40000 ALTER TABLE `review` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `targets`
+--
+
+DROP TABLE IF EXISTS `targets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `targets` (
+  `empid` int(11) DEFAULT NULL,
+  `targetid` int(11) NOT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `tname` varchar(45) DEFAULT NULL,
+  `start date` date DEFAULT NULL,
+  `enddate` date DEFAULT NULL,
+  `review_type` varchar(45) DEFAULT NULL,
+  `self_rating` int(11) DEFAULT NULL,
+  `reviewer_rating` int(11) DEFAULT NULL,
+  PRIMARY KEY (`targetid`),
+  KEY `taget_emp_idx` (`empid`),
+  CONSTRAINT `taget_emp` FOREIGN KEY (`empid`) REFERENCES `employee` (`empid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `targets`
+--
+
+LOCK TABLES `targets` WRITE;
+/*!40000 ALTER TABLE `targets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `targets` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-11-08 10:56:51
+
+
+
+
+
